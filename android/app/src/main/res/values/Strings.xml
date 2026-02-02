@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vet Vision</string>
+    <string name="facebook_app_id">1353070506604711</string>
+    <string name="fb_login_protocol_scheme">fb1353070506604711</string>
+    <string name="facebook_client_token">5d4092db0a84b71c22febebb6354b0ab</string>
+</resources>

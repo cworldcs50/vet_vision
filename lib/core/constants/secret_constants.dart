@@ -1,0 +1,4 @@
+class SecretConstants {
+  static const String kSupabaseUrl = "https://gogkezljqqqarszsiqra.supabase.co";
+  static const String kSupabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdvZ2tlemxqcXFxYXJzenNpcXJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1ODU3MzUsImV4cCI6MjA3ODE2MTczNX0._bxrzIV4OQmZv8B1zj1l0qfbVnSw7iU3Q3DlXSwZQ1s";
+}
