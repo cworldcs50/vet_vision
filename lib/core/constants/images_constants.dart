@@ -13,4 +13,5 @@ class ImagesConstants {
   static const String lottieServerFailure =
       "assets/images/lotties/server_failure.json";
   static const String lottieOffline = "assets/images/lotties/offline.json";
+  static const String doctorProfile = "assets/images/doctor.png";
 }

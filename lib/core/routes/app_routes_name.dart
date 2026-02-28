@@ -9,6 +9,7 @@ class AppRoutesName {
   static const String rBookAppointment = "/";
   //bookAppointment
   static const String rMyPets = "/myPets";
+  static const String rDoctorDetails = "/doctorDetails";
   static const String rHealthRecords = "/healthRecords";
   static const String rForgetPassword = "/forgetPassword";
 }

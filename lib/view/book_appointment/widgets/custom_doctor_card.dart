@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../core/routes/app_routes_name.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -9,7 +11,6 @@ class CustomDoctorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.r)),
       child: Column(
         children: [
           Expanded(child: Image.asset("assets/images/doctor.png")),
@@ -18,7 +19,7 @@ class CustomDoctorCard extends StatelessWidget {
             style: TextStyle(
               fontSize: AdaptiveLayout.getResponsiveFontSize(
                 context,
-                fontSize: 25,
+                fontSize: 17,
               ),
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -31,7 +32,7 @@ class CustomDoctorCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: AdaptiveLayout.getResponsiveFontSize(
                   context,
-                  fontSize: 19,
+                  fontSize: 15,
                 ),
                 color: Colors.black,
               ),
@@ -45,7 +46,7 @@ class CustomDoctorCard extends StatelessWidget {
                 color: Colors.yellow.shade400,
                 size: AdaptiveLayout.getResponsiveFontSize(
                   context,
-                  fontSize: 19,
+                  fontSize: 12,
                 ),
               ),
               Text(
@@ -53,7 +54,7 @@ class CustomDoctorCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: AdaptiveLayout.getResponsiveFontSize(
                     context,
-                    fontSize: 19,
+                    fontSize: 12,
                   ),
                   color: Colors.black,
                 ),
@@ -64,7 +65,7 @@ class CustomDoctorCard extends StatelessWidget {
                 color: Colors.grey,
                 size: AdaptiveLayout.getResponsiveFontSize(
                   context,
-                  fontSize: 25,
+                  fontSize: 12,
                 ),
               ),
               Text(
@@ -72,7 +73,7 @@ class CustomDoctorCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: AdaptiveLayout.getResponsiveFontSize(
                     context,
-                    fontSize: 18,
+                    fontSize: 12,
                   ),
                   color: Colors.black,
                 ),
@@ -87,7 +88,7 @@ class CustomDoctorCard extends StatelessWidget {
                 color: Colors.grey.shade800,
                 size: AdaptiveLayout.getResponsiveFontSize(
                   context,
-                  fontSize: 20,
+                  fontSize: 12,
                 ),
               ),
               Text(
@@ -95,7 +96,7 @@ class CustomDoctorCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: AdaptiveLayout.getResponsiveFontSize(
                     context,
-                    fontSize: 20,
+                    fontSize: 12,
                   ),
                   color: Colors.grey.shade800,
                 ),
@@ -109,13 +110,14 @@ class CustomDoctorCard extends StatelessWidget {
                 alignment: Alignment.center,
                 backgroundColor: AppColors.primaryColor,
               ),
-              onPressed: () {},
+              onPressed:
+                  () async => await Get.toNamed(AppRoutesName.rDoctorDetails),
               child: Text(
                 "Book Now",
                 style: TextStyle(
                   fontSize: AdaptiveLayout.getResponsiveFontSize(
                     context,
-                    fontSize: 25,
+                    fontSize: 10,
                   ),
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -128,4 +130,3 @@ class CustomDoctorCard extends StatelessWidget {
     );
   }
 }
-

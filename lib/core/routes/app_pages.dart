@@ -11,6 +11,7 @@ import '../../view/auth/forget_password.dart';
 import '../../view/auth/success_sign_in.dart';
 import '../../view/onboarding/onboarding_view.dart';
 import '../../view/health_records/health_records.dart';
+import '../../view/book_appointment/doctor_details.dart';
 import '../../view/book_appointment/book_appointment.dart';
 
 List<GetPage> kAppPages = [
@@ -44,5 +45,9 @@ List<GetPage> kAppPages = [
   GetPage(
     name: AppRoutesName.rHealthRecords,
     page: () => const HealthRecords(),
+  ),
+  GetPage(
+    name: AppRoutesName.rDoctorDetails,
+    page: () => const DoctorDetails(),
   ),
 ];

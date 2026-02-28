@@ -5,7 +5,6 @@ import 'widgets/desktop_book_appointment.dart';
 import 'widgets/tablet_book_appointement.dart';
 import '../../core/classes/adaptive_layout.dart';
 import '../home/widget/custom_bottom_sheet.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookAppointment extends StatelessWidget {
   const BookAppointment({super.key});
@@ -19,13 +18,13 @@ class BookAppointment extends StatelessWidget {
         actions: [
           IconButton(
             onPressed:
-                () => showModalBottomSheet(
+                () async => await showModalBottomSheet(
                   context: context,
                   builder: (context) => const CustomBottomSheet(),
                 ),
             icon: Icon(
               Icons.settings_outlined,
-              size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 25),
+              size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 19),
             ),
           ),
         ],
@@ -40,9 +39,11 @@ class BookAppointment extends StatelessWidget {
           ),
         ),
         leading: Container(
-          width: 35.w,
-          height: 35.h,
-          margin: EdgeInsets.only(left: 10.w),
+          width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          margin: EdgeInsets.only(
+            left: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+          ),
           alignment: Alignment.center,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
@@ -55,7 +56,6 @@ class BookAppointment extends StatelessWidget {
           ),
         ),
       ),
-
       body: AdaptiveLayout(
         desktopLayout: (context) => const DesktopBookAppointment(),
         mobileLayout: (context) => const MobileBookAppointment(),
