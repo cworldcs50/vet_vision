@@ -145,6 +145,22 @@ class SupabaseService {
     }
   }
 
+  Future<Either<ErrorModel, void>> forgetPassword(String email) async {
+    try {
+      if (!await isOnline()) {
+        return const Left(
+          ErrorModel(title: "Error!", message: "You are currently offline!"),
+        );
+      } else {
+        return Right(await supabase.auth.resetPasswordForEmail(email));
+      }
+    } on AuthApiException catch (e) {
+      return Left(
+        ErrorModel(message: "Status code: ${e.statusCode}", title: e.message),
+      );
+    }
+  }
+
   Future<Either<ErrorModel, AuthResponse>> signInWithEmailAndPassword({
     required String email,
     required String password,

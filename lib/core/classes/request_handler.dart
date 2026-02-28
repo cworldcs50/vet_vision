@@ -21,27 +21,46 @@ class RequestHandlerView extends StatelessWidget {
       case RequestStatus.noData:
         return child;
       case RequestStatus.loading:
-        return Center(child: Lottie.asset(ImagesConstants.lottieLoading));
+        return Center(
+          child: Lottie.asset(
+            ImagesConstants.lottieLoading,
+            width: MediaQuery.of(context).size.width / 1.5,
+            height: MediaQuery.of(context).size.height / 1.5,
+          ),
+        );
       case RequestStatus.failure:
-        return _buildRetryView(ImagesConstants.lottieFailure, "Try Again");
+        return _buildRetryView(
+          ImagesConstants.lottieFailure,
+          "Try Again",
+          context,
+        );
       case RequestStatus.serverFailure:
         return _buildRetryView(
           ImagesConstants.lottieServerFailure,
           "Server Down",
+          context,
         );
       case RequestStatus.offlineFailure:
-        return _buildRetryView(ImagesConstants.lottieOffline, "Retry");
+        return _buildRetryView(ImagesConstants.lottieOffline, "Retry", context);
       default:
         return child;
     }
   }
 
-  Widget _buildRetryView(String lottiePath, String buttonText) {
+  Widget _buildRetryView(
+    String lottiePath,
+    String buttonText,
+    BuildContext context,
+  ) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(lottiePath),
+          Lottie.asset(
+            lottiePath,
+            width: MediaQuery.of(context).size.width / 1.5,
+            height: MediaQuery.of(context).size.height / 1.5,
+          ),
           if (onRetry != null)
             ElevatedButton(
               onPressed: onRetry,

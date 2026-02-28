@@ -21,7 +21,6 @@ class VetVision extends StatelessWidget {
             getPages: kAppPages,
             initialBinding: AppBinding(),
             title: AppConstants.kAppTitle,
-
             debugShowCheckedModeBanner: false,
           ),
         );

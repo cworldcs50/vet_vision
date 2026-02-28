@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../../../core/classes/adaptive_layout.dart';
+import '../../../core/routes/app_routes_name.dart';
 import 'custom_auth_button.dart';
 import 'custom_auth_options.dart';
 import 'custom_text_form_field.dart';
@@ -46,13 +48,17 @@ class CustomSignInForm extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed:
+                  () async => await Get.toNamed(AppRoutesName.rForgetPassword),
               style: TextButton.styleFrom(overlayColor: Colors.transparent),
               child: Text(
                 "Forget Password?",
                 style: TextStyle(
                   color: const Color(0XFF009689),
-                  fontSize: 15.sp,
+                  fontSize: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -72,11 +78,23 @@ class CustomSignInForm extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(ImagesConstants.googleIcon, width: 13.w),
+                Image.asset(
+                  ImagesConstants.googleIcon,
+                  width: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
+                ),
                 15.horizontalSpace,
-                const Text(
+                Text(
                   "Continue with Google",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 10,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -91,12 +109,21 @@ class CustomSignInForm extends StatelessWidget {
                 Icon(
                   Icons.facebook,
                   color: const Color(0XFF1877F2),
-                  size: 15.w,
+                  size: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
                 ),
-                15.horizontalSpace,
-                const Text(
+                10.horizontalSpace,
+                Text(
                   "Continue with facebook",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 10,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -105,9 +132,15 @@ class CustomSignInForm extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 "Don't have an account?",
-                style: TextStyle(color: Color(0XFF4A5565)),
+                style: TextStyle(
+                  color: const Color(0XFF4A5565),
+                  fontSize: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
+                ),
               ),
               TextButton(
                 onPressed: controller.goToSignUp,
@@ -115,7 +148,10 @@ class CustomSignInForm extends StatelessWidget {
                 child: Text(
                   "Sign Up",
                   style: TextStyle(
-                    fontSize: 15.sp,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 15,
+                    ),
                     color: const Color(0XFF009689),
                   ),
                 ),
@@ -127,4 +163,3 @@ class CustomSignInForm extends StatelessWidget {
     );
   }
 }
-

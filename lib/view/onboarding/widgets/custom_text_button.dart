@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/classes/adaptive_layout.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
@@ -18,9 +18,11 @@ class CustomTextButton extends StatelessWidget {
       style: TextButton.styleFrom(overlayColor: Colors.transparent),
       child: Text(
         btnTitle,
-        style: TextStyle(fontSize: 16.sp, color: const Color(0XFF6A7282)),
+        style: TextStyle(
+          fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 15),
+          color: const Color(0XFF6A7282),
+        ),
       ),
     );
   }
 }
-

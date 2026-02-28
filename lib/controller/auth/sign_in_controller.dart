@@ -1,8 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/constants/caching_keys_constants.dart';
 import '../../core/network/request_status.dart';
 import '../../core/routes/app_routes_name.dart';
 import '../../core/classes/base_request_controller.dart';
+import '../../core/services/app_service.dart';
+import '../../data/datasource/remote/auth/forget_password_data.dart';
 import '../../data/datasource/remote/auth/sign_in_with_google.dart';
 import '../../data/datasource/remote/auth/sign_in_with_facebook.dart';
 import '../../data/datasource/remote/auth/sign_in_with_email_and_password.dart';
@@ -10,11 +14,44 @@ import '../../data/datasource/remote/auth/sign_in_with_email_and_password.dart';
 class SignInController extends BaseRequestController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController forgetPasswordController = TextEditingController();
+  final SharedPreferences _sharedPrefs = Get.find<AppServices>().appSharedPrefs;
   final GlobalKey<FormState> signInFormKey = GlobalKey<FormState>(
     debugLabel: "signInFormKey",
   );
   IconData showPasswordSuffixIcon = Icons.visibility_outlined;
   bool showPassword = true;
+
+  Future<void> forgetPassword() async {
+    if (!await checkOnline()) return;
+
+    setStatus(RequestStatus.loading);
+
+    final result = await ForgetPasswordData()(
+      email: forgetPasswordController.text,
+    );
+
+    result.fold(
+      (l) {
+        setStatus(RequestStatus.failure);
+        Get.snackbar(
+          l.title,
+          l.message,
+          titleText: Text(l.title, style: const TextStyle(color: Colors.white)),
+          messageText: Text(
+            l.message,
+            style: const TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      },
+      (_) async {
+        setStatus(RequestStatus.success);
+        await Get.toNamed(AppRoutesName.rTokenPassword);
+      },
+    );
+  }
 
   void visiblePassword() {
     showPassword = !showPassword;
@@ -60,14 +97,21 @@ class SignInController extends BaseRequestController {
     final result = await SignInWithGoogle()();
 
     result.fold(
-      (l) => Get.showSnackbar(
-        GetSnackBar(
-          title: l.title,
-          message: l.message,
-          backgroundColor: Colors.red,
+      (l) => Get.snackbar(
+        l.title,
+        l.message,
+        titleText: Text(l.title, style: const TextStyle(color: Colors.white)),
+        messageText: Text(
+          l.message,
+          style: const TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.red,
       ),
-      (r) async => await Get.offAllNamed(AppRoutesName.rHome),
+      (r) async {
+        setStatus(RequestStatus.success);
+        await _sharedPrefs.setBool(CachingKeysConstants.kIsAuthedUser, true);
+        await Get.offAllNamed(AppRoutesName.rHome);
+      },
     );
   }
 
@@ -75,14 +119,21 @@ class SignInController extends BaseRequestController {
     final result = await SignInWithFacebook()();
 
     result.fold(
-      (l) => Get.showSnackbar(
-        GetSnackBar(
-          title: l.title,
-          message: l.message,
-          backgroundColor: Colors.red,
+      (l) => Get.snackbar(
+        l.title,
+        l.message,
+        titleText: Text(l.title, style: const TextStyle(color: Colors.white)),
+        messageText: Text(
+          l.message,
+          style: const TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.red,
       ),
-      (r) async => await Get.offAllNamed(AppRoutesName.rHome),
+      (r) async {
+        setStatus(RequestStatus.success);
+        await _sharedPrefs.setBool(CachingKeysConstants.kIsAuthedUser, true);
+        await Get.offAllNamed(AppRoutesName.rHome);
+      },
     );
   }
 
@@ -100,16 +151,23 @@ class SignInController extends BaseRequestController {
       result.fold(
         (l) {
           setStatus(RequestStatus.failure);
-          Get.showSnackbar(
-            GetSnackBar(
-              title: l.title,
-              message: l.message,
-              backgroundColor: Colors.red,
+          Get.snackbar(
+            l.title,
+            l.message,
+            titleText: Text(
+              l.title,
+              style: const TextStyle(color: Colors.white),
             ),
+            messageText: Text(
+              l.message,
+              style: const TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.red,
           );
         },
         (r) async {
           setStatus(RequestStatus.success);
+          await _sharedPrefs.setBool(CachingKeysConstants.kIsAuthedUser, true);
           await Get.offAllNamed(AppRoutesName.rHome);
         },
       );
@@ -117,28 +175,6 @@ class SignInController extends BaseRequestController {
   }
 
   void retry() => setStatus(RequestStatus.noData);
-
-  /*Future<void> signIn() async {
-    if (signInFormKey.currentState!.validate()) {
-      final result = await SignInWithEmailAndPassword()(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-
-      result.fold(
-        (l) => Get.showSnackbar(
-          GetSnackBar(
-            title: l.title,
-            message: l.message,
-            backgroundColor: Colors.red,
-          ),
-        ),
-        (r) async {
-          await Get.offAllNamed(AppRoutesName.rHome);
-        },
-      );
-    }
-  }*/
 
   Future<void> goToSignUp() async => await Get.offNamed(AppRoutesName.rSignUp);
 

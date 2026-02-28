@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/classes/adaptive_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -17,13 +18,18 @@ class CustomElevatedButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         alignment: Alignment.center,
-        backgroundColor: const Color(0XFF00BBA7),
-        foregroundColor: const Color(0XFFFFFFFF),
+        fixedSize: Size(200.w, 40.h),
         minimumSize: Size(50.w, 30.h),
-        maximumSize: Size(300.w, 40.h),
-        fixedSize: Size(300.w, 40.h),
+        maximumSize: Size(200.w, 40.h),
+        foregroundColor: const Color(0XFFFFFFFF),
+        backgroundColor: const Color(0XFF00BBA7),
       ),
-      child: Text(buttonTitle, style: TextStyle(fontSize: 16.sp)),
+      child: Text(
+        buttonTitle,
+        style: TextStyle(
+          fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+        ),
+      ),
     );
   }
 }

@@ -18,13 +18,13 @@ class CustomSlider extends StatelessWidget {
             kOnBoardingData.length,
             (index) => AnimatedContainer(
               height: 7.h,
-              margin: EdgeInsets.only(right: 10.w),
+              margin: EdgeInsets.only(right: 5.w),
               decoration: BoxDecoration(
                 color: AppColors.primaryColor,
                 borderRadius: BorderRadius.circular(10.r),
               ),
               duration: const Duration(milliseconds: 1200),
-              width: controller.currentPageIndex == index ? 30.w : 10.w,
+              width: controller.currentPageIndex == index ? 20.w : 10.w,
             ),
           ),
         );

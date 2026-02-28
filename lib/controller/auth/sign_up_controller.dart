@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../core/constants/caching_keys_constants.dart';
 import '../../core/network/request_status.dart';
+import '../../core/services/app_service.dart';
 import '../../data/models/user_model.dart';
 import '../../core/routes/app_routes_name.dart';
 import '../../data/datasource/static/cache_user.dart';
@@ -14,6 +17,7 @@ mixin class Validators {
   TextEditingController emailController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController confirmedPasswordController = TextEditingController();
+  final SharedPreferences _sharedPrefs = Get.find<AppServices>().appSharedPrefs;
 
   String? passwordValidator(String? password) {
     if (password == null) {
@@ -114,21 +118,6 @@ class SignUpController extends BaseRequestController with Validators {
     update();
   }
 
-  /*Future<void> signUpWithGoogle() async {
-    final result = await SignInWithGoogle()();
-
-    result.fold(
-      (l) => Get.showSnackbar(
-        GetSnackBar(
-          title: l.title,
-          message: l.message,
-          backgroundColor: Colors.red,
-        ),
-      ),
-      (r) async => await Get.offAllNamed(AppRoutesName.rSignIn),
-    );
-  }*/
-
   Future<void> signUpWithGoogle() async {
     if (!await checkOnline()) return;
 
@@ -139,12 +128,15 @@ class SignUpController extends BaseRequestController with Validators {
     result.fold(
       (l) {
         setStatus(RequestStatus.failure);
-        Get.showSnackbar(
-          GetSnackBar(
-            title: l.title,
-            message: l.message,
-            backgroundColor: Colors.red,
+        Get.snackbar(
+          l.title,
+          l.message,
+          titleText: Text(l.title, style: const TextStyle(color: Colors.white)),
+          messageText: Text(
+            l.message,
+            style: const TextStyle(color: Colors.white),
           ),
+          backgroundColor: Colors.red,
         );
       },
       (r) async {
@@ -177,21 +169,6 @@ class SignUpController extends BaseRequestController with Validators {
       },
     );
   }
-
-  /*Future<void> signUpWithFacebook() async {
-    final result = await SignInWithFacebook()();
-
-    result.fold(
-      (l) => Get.showSnackbar(
-        GetSnackBar(
-          title: l.title,
-          message: l.message,
-          backgroundColor: Colors.red,
-        ),
-      ),
-      (r) async => await Get.offAllNamed(AppRoutesName.rSignIn),
-    );
-  }*/
 
   Future<void> signUpWithFacebook() async {
     if (!await checkOnline()) return;
@@ -236,6 +213,10 @@ class SignUpController extends BaseRequestController with Validators {
           },
           (_) async {
             await Get.offAllNamed(AppRoutesName.rSuccessAuth);
+            await _sharedPrefs.setBool(
+              CachingKeysConstants.kIsAuthedUser,
+              true,
+            );
           },
         );
       },
@@ -268,17 +249,16 @@ class SignUpController extends BaseRequestController with Validators {
           },
           (r) async {
             setStatus(RequestStatus.success);
-            final isCached = await CacheUser()(
-              UserModel(
-                id: r.session!.user.id,
-                email: emailController.text.trim(),
-                fullName: fullNameController.text.trim(),
-                password: confirmedPasswordController.text.trim(),
-              ),
-            );
-
-            isCached.fold(
-              (l) {
+            try {
+              final isCached = await CacheUser()(
+                UserModel(
+                  id: r.session == null ? r.user!.aud : r.session!.user.id,
+                  email: emailController.text.trim(),
+                  fullName: fullNameController.text.trim(),
+                  password: confirmedPasswordController.text.trim(),
+                ),
+              );
+              isCached.fold((l) {
                 setStatus(RequestStatus.failure);
                 Get.showSnackbar(
                   GetSnackBar(
@@ -287,11 +267,17 @@ class SignUpController extends BaseRequestController with Validators {
                     backgroundColor: Colors.red,
                   ),
                 );
-              },
-              (_) async {
-                await Get.toNamed(AppRoutesName.rSuccessAuth);
-              },
-            );
+              }, (_) async => await Get.toNamed(AppRoutesName.rSuccessAuth));
+            } catch (e) {
+              setStatus(RequestStatus.failure);
+              Get.showSnackbar(
+                GetSnackBar(
+                  title: "Error!",
+                  message: e.toString(),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
           },
         );
       } else {

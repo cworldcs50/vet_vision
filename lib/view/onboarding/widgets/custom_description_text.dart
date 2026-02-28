@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/classes/adaptive_layout.dart';
 
 class CustomDescription extends StatelessWidget {
   const CustomDescription({required this.description, super.key});
@@ -11,7 +11,10 @@ class CustomDescription extends StatelessWidget {
     return Text(
       description,
       textAlign: TextAlign.center,
-      style: TextStyle(fontSize: 14.sp, color: const Color(0xFF6A7282)),
+      style: TextStyle(
+        color: const Color(0xFF6A7282),
+        fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 18),
+      ),
     );
   }
 }

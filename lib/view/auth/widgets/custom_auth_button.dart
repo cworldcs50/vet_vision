@@ -3,16 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
+    super.key,
+    required this.child,
     required this.onPressed,
     required this.backgroundColor,
-
-    required this.child,
-    super.key,
   });
 
-  final void Function() onPressed;
-  final Color backgroundColor;
   final Widget child;
+  final Color backgroundColor;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +19,6 @@ class CustomAuthButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
-        fixedSize: Size(250.w, 38.h),
-        maximumSize: Size(250.w, 38.h),
-        minimumSize: Size(250.w, 38.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.r),
         ),

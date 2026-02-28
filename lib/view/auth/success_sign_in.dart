@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core/constants/caching_keys_constants.dart';
 import '../../core/routes/app_routes_name.dart';
+import '../../core/services/app_service.dart';
 import '../../core/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +33,15 @@ class SuccessSignIn extends StatelessWidget {
             ),
 
             ElevatedButton(
-              onPressed: () async => await Get.offAllNamed(AppRoutesName.rHome),
+              onPressed: () async {
+                final SharedPreferences sharedPrefs =
+                    Get.find<AppServices>().appSharedPrefs;
+                await sharedPrefs.setBool(
+                  CachingKeysConstants.kIsAuthedUser,
+                  true,
+                );
+                await Get.offAllNamed(AppRoutesName.rHome);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryColor,
               ),

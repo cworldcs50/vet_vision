@@ -25,9 +25,6 @@ class OnBoardingController extends GetxController {
   }
 
   Future<void> next() async {
-    // If we're on the last page, mark visited and navigate away and do not
-    // attempt to animate the page controller (the PageView will be disposed
-    // during navigation which causes the ScrollController assertion).
     if (currentPageIndex == kOnBoardingData.length - 1) {
       log("Current page index: $currentPageIndex");
       log("on boarding models length: ${kOnBoardingData.length - 1}");
@@ -35,7 +32,6 @@ class OnBoardingController extends GetxController {
       return;
     }
 
-    // Only animate if the controller is attached to at least one PageView.
     if (pageController.hasClients) {
       await pageController.animateToPage(
         currentPageIndex + 1,

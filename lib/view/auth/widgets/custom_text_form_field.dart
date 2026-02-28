@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/classes/adaptive_layout.dart';
+
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
@@ -14,13 +16,13 @@ class CustomTextFormField extends StatelessWidget {
     this.onPressed,
   });
 
+  final bool obscureText;
   final String label, hint;
   final IconData prefixIcon;
   final IconData? suffixIcon;
-  final String? Function(String?) validator;
-  final TextEditingController? controller;
   final void Function()? onPressed;
-  final bool obscureText;
+  final TextEditingController? controller;
+  final String? Function(String?) validator;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,13 @@ class CustomTextFormField extends StatelessWidget {
           children: [
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
+                fontSize: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 10,
+                ),
               ),
             ),
           ],
@@ -43,7 +49,13 @@ class CustomTextFormField extends StatelessWidget {
           obscureText: obscureText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: validator,
-          style: const TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AdaptiveLayout.getResponsiveFontSize(
+              context,
+              fontSize: 12,
+            ),
+          ),
           cursorColor: Colors.black,
           cursorWidth: 2.w,
           decoration: InputDecoration(
@@ -52,7 +64,10 @@ class CustomTextFormField extends StatelessWidget {
               onPressed: onPressed,
               icon: Icon(
                 suffixIcon,
-                size: 17.sp,
+                size: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 17,
+                ),
                 color: const Color(0XFF999AAF),
               ),
             ),
@@ -60,7 +75,7 @@ class CustomTextFormField extends StatelessWidget {
             focusColor: const Color(0XFF999AAF),
             prefixIcon: Icon(
               prefixIcon,
-              size: 20.sp,
+              size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
               color: const Color(0XFF999AAF),
             ),
             prefixIconColor: const Color(0XFF999AAF),
