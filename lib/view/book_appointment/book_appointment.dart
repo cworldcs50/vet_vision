@@ -57,9 +57,9 @@ class BookAppointment extends StatelessWidget {
         ),
       ),
       body: AdaptiveLayout(
-        desktopLayout: (context) => const DesktopBookAppointment(),
         mobileLayout: (context) => const MobileBookAppointment(),
         tabletLayout: (context) => const TabletBookAppointment(),
+        desktopLayout: (context) => const DesktopBookAppointment(),
       ),
     );
   }

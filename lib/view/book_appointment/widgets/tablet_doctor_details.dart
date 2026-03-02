@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../core/routes/app_routes_name.dart';
 import 'custom_doctor_image.dart';
 import 'custom_doctor_name_and_price.dart';
-import 'custom_book_appointement_btn.dart';
+import 'custom_elevated_btn.dart';
 import 'custom_doctor_specialty_text.dart';
 import 'custom_available_appointments.dart';
 import '../../../core/theme/app_colors.dart';
@@ -350,7 +352,11 @@ class TabletDoctorDetails extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
-              child: CustomBookAppointementBtn(onPressed: () {}),
+              child: CustomElevatedBtn(
+                btnTitle: "Go To Payment",
+                onPressed:
+                    () async => await Get.toNamed(AppRoutesName.rCheckout),
+              ),
             ),
 
             SizedBox(height: 16.h),

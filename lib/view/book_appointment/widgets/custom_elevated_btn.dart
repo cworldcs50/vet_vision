@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/classes/adaptive_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/classes/adaptive_layout.dart';
-import '../../../core/theme/app_colors.dart';
+class CustomElevatedBtn extends StatelessWidget {
+  const CustomElevatedBtn({
+    super.key,
+    required this.btnTitle,
+    required this.onPressed,
+  });
 
-class CustomBookAppointementBtn extends StatelessWidget {
-  const CustomBookAppointementBtn({super.key, required this.onPressed});
-
+  final String btnTitle;
   final void Function() onPressed;
 
   @override
@@ -22,7 +26,7 @@ class CustomBookAppointementBtn extends StatelessWidget {
         elevation: 0,
       ),
       child: Text(
-        "Book Appointment",
+        btnTitle,
         style: TextStyle(
           fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 15),
           fontWeight: FontWeight.bold,
@@ -32,4 +36,3 @@ class CustomBookAppointementBtn extends StatelessWidget {
     );
   }
 }
-
