@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:async';
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
@@ -239,6 +240,24 @@ class SupabaseService {
       return const Left(
         ErrorModel(message: "Failed to sign out", title: "Error!"),
       );
+    }
+  }
+
+  Future<String?> uploadImage(String bucket, String path) async {
+    try {
+      final file = File(path);
+      final fileName = path.split('/').last;
+      final uploadPath = '${DateTime.now().millisecondsSinceEpoch}_$fileName';
+
+      await supabase.storage.from(bucket).upload(uploadPath, file);
+
+      final String publicUrl =
+          supabase.storage.from(bucket).getPublicUrl(uploadPath);
+
+      return publicUrl;
+    } catch (e) {
+      log("Upload Error: $e");
+      return null;
     }
   }
 }

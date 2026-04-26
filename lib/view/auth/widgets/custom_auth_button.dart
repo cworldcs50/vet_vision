@@ -7,9 +7,11 @@ class CustomAuthButton extends StatelessWidget {
     required this.child,
     required this.onPressed,
     required this.backgroundColor,
+    this.isOutlined = false,
   });
 
   final Widget child;
+  final bool isOutlined;
   final Color backgroundColor;
   final void Function() onPressed;
 
@@ -19,6 +21,9 @@ class CustomAuthButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
+        elevation: isOutlined ? 0 : 2,
+        side:
+            isOutlined ? const BorderSide(color: Colors.grey) : BorderSide.none,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.r),
         ),

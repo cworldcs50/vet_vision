@@ -1,42 +1,22 @@
-import 'tablet_home_view_body.dart';
-import 'mobile_home_view_body.dart';
-import 'desktop_home_view_body.dart';
 import 'package:flutter/material.dart';
 import '../../../core/classes/adaptive_layout.dart';
+import 'mobile_home_view_body.dart';
+import 'tablet_home_view_body.dart';
+import 'desktop_home_view_body.dart';
 
 class CustomHomeBody extends StatelessWidget {
-  const CustomHomeBody({
-    super.key,
-    required this.goToMyPets,
-    required this.goToHealthRecords,
-    required this.goToBookAppointement,
-  });
-
-  final void Function() goToMyPets;
-  final void Function() goToHealthRecords;
-  final void Function() goToBookAppointement;
+  const CustomHomeBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AdaptiveLayout(
-      mobileLayout:
-          (context) => MobileHomeViewBody(
-            goToMyPets: goToMyPets,
-            goToHealthRecords: goToHealthRecords,
-            goToBookAppointement: goToBookAppointement,
-          ),
-      desktopLayout:
-          (context) => DesktopHomeViewBody(
-            goToMyPets: goToMyPets,
-            goToHealthRecords: goToHealthRecords,
-            goToBookAppointement: goToBookAppointement,
-          ),
+      mobileLayout: (context) => const MobileHomeViewBody(),
       tabletLayout:
-          (context) => TabletHomeViewBody(
-            goToMyPets: goToMyPets,
-            goToHealthRecords: goToHealthRecords,
-            goToBookAppointement: goToBookAppointement,
-          ),
+          (context) =>
+              const TabletHomeViewBody(), // We'll just proxy these to Mobile for now
+      desktopLayout:
+          (context) =>
+              const DesktopHomeViewBody(), // We'll just proxy these to Mobile for now
     );
   }
 }

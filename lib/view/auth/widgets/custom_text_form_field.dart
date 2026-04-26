@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../core/classes/adaptive_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/classes/adaptive_layout.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -14,6 +14,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText = false,
     this.onPressed,
+    this.keyboardType,
+    this.maxLines = 1,
   });
 
   final bool obscureText;
@@ -23,6 +25,8 @@ class CustomTextFormField extends StatelessWidget {
   final void Function()? onPressed;
   final TextEditingController? controller;
   final String? Function(String?) validator;
+  final TextInputType? keyboardType;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +51,8 @@ class CustomTextFormField extends StatelessWidget {
         TextFormField(
           controller: controller,
           obscureText: obscureText,
+          keyboardType: keyboardType,
+          maxLines: maxLines,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: validator,
           style: TextStyle(
@@ -60,17 +66,19 @@ class CustomTextFormField extends StatelessWidget {
           cursorWidth: 2.w,
           decoration: InputDecoration(
             hintText: hint,
-            suffixIcon: IconButton(
-              onPressed: onPressed,
-              icon: Icon(
-                suffixIcon,
-                size: AdaptiveLayout.getResponsiveFontSize(
-                  context,
-                  fontSize: 17,
-                ),
-                color: const Color(0XFF999AAF),
-              ),
-            ),
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                    onPressed: onPressed,
+                    icon: Icon(
+                      suffixIcon,
+                      size: AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 17,
+                      ),
+                      color: const Color(0XFF999AAF),
+                    ),
+                  )
+                : null,
             alignLabelWithHint: true,
             focusColor: const Color(0XFF999AAF),
             prefixIcon: Icon(
@@ -79,7 +87,8 @@ class CustomTextFormField extends StatelessWidget {
               color: const Color(0XFF999AAF),
             ),
             prefixIconColor: const Color(0XFF999AAF),
-            contentPadding: EdgeInsets.zero,
+            contentPadding:
+                maxLines! > 1 ? EdgeInsets.all(12.w) : EdgeInsets.zero,
             filled: true,
             fillColor: const Color(0XFFf3f3f5),
             border: OutlineInputBorder(

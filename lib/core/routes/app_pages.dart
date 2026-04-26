@@ -1,35 +1,38 @@
 import 'package:get/get.dart';
-import '../../view/book_appointment/widgets/mobile_checkout.dart';
 import 'app_routes_name.dart';
 import 'auth_middleware.dart';
 import '../../view/home/home.dart';
-import '../../view/splash/logo.dart';
 import 'on_boarding_middleware.dart';
-import '../../view/auth/sign_in.dart';
-import '../../view/auth/sign_up.dart';
+import '../../view/splash/logo.dart';
+import '../../view/auth/auth_view.dart';
 import '../../view/my_pets/my_pets.dart';
+import '../../view/auth/role_selection.dart';
 import '../../view/auth/forget_password.dart';
+import '../../view/payment/payment_view.dart';
 import '../../view/auth/success_sign_in.dart';
+import '../../view/book_appointment/checkout.dart';
 import '../../view/onboarding/onboarding_view.dart';
 import '../../view/health_records/health_records.dart';
-import '../../view/book_appointment/doctor_details.dart';
+import '../../view/book_appointment/doctor_profile.dart';
 import '../../view/book_appointment/book_appointment.dart';
+import '../../view/doctor_view/doctor_login_view.dart';
+import '../../view/doctor_view/doctor_registration_view.dart';
+import '../../view/doctor_view/portal/doctor_portal_main_view.dart';
 
 List<GetPage> kAppPages = [
+  GetPage(
+    name: AppRoutesName.rRoleSelection,
+    page: () => const RoleSelection(),
+  ),
+  GetPage(
+    name: AppRoutesName.rAuthView,
+    page: () => const AuthView(),
+    middlewares: [AuthMiddleware()],
+  ),
   GetPage(
     page: () => const Logo(),
     name: AppRoutesName.rLogo,
     middlewares: [OnBoardingMiddleware()],
-  ),
-  GetPage(
-    page: () => const SignUp(),
-    name: AppRoutesName.rSignUp,
-    middlewares: [AuthMiddleware()],
-  ),
-  GetPage(
-    page: () => const SignIn(),
-    name: AppRoutesName.rSignIn,
-    middlewares: [AuthMiddleware()],
   ),
   GetPage(name: AppRoutesName.rHome, page: () => const HomeView()),
   GetPage(name: AppRoutesName.rOnBoarding, page: () => const OnboardingView()),
@@ -48,8 +51,21 @@ List<GetPage> kAppPages = [
     name: AppRoutesName.rHealthRecords,
   ),
   GetPage(
-    page: () => const DoctorDetails(),
+    page: () => const DoctorProfile(),
     name: AppRoutesName.rDoctorDetails,
   ),
   GetPage(name: AppRoutesName.rCheckout, page: () => const Checkout()),
+  GetPage(name: AppRoutesName.rPayment, page: () => const PaymentView()),
+  GetPage(
+    name: AppRoutesName.rDoctorSignIn,
+    page: () => const DoctorLoginView(),
+  ),
+  GetPage(
+    name: AppRoutesName.rDoctorSignUp,
+    page: () => const DoctorRegistrationView(),
+  ),
+  GetPage(
+    name: AppRoutesName.rDoctorPortal,
+    page: () => const DoctorPortalMainView(),
+  ),
 ];

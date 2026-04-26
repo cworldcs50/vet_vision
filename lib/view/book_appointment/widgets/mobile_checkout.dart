@@ -1,37 +1,83 @@
-import '../mobile_checkout.dart';
-import 'desktop_checkout.dart';
-import 'tablet_checkout.dart';
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
+import 'package:get/get.dart';
+import 'custom_elevated_btn.dart';
+import 'custom_additional_notes.dart';
+import 'custom_date_time_selector.dart';
 import '../../../core/classes/adaptive_layout.dart';
+import 'custom_checkout_doctor_card.dart';
+import 'custom_session_type_selector.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../controller/book_appointment/checkout_controller.dart';
 
-class Checkout extends StatelessWidget {
-  const Checkout({super.key});
+class MobileCheckout extends GetView<CheckoutController> {
+  const MobileCheckout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: AppColors.backgroundColor,
-        elevation: 0,
-        title: Text(
-          "Book Appointment",
-          style: TextStyle(
-            color: AppColors.primaryColor,
-            fontSize: AdaptiveLayout.getResponsiveFontSize(
-              context,
-              fontSize: 15,
-            ),
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+    Get.put(CheckoutController());
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+        horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+        vertical: 8.h,
       ),
-      body: AdaptiveLayout(
-        mobileLayout: (context) => const MobileCheckout(),
-        tabletLayout: (context) => const TabletCheckout(),
-        desktopLayout: (context) => const DesktopCheckout(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Doctor Card
+          const CustomCheckoutDoctorCard(
+            price: 150,
+            specialty: "Psychiatrist",
+            doctorName: "Dr. Michael Chen",
+            imgPath: "assets/images/doctor.png",
+          ),
+          SizedBox(height: 24.h),
+
+          // Session Type
+          Obx(
+            () => CustomSessionTypeSelector(
+              selectedType: controller.selectedSessionType.value,
+              onChanged: controller.setSessionType,
+            ),
+          ),
+          SizedBox(height: 24.h),
+
+          // Date & Time
+          Obx(
+            () => CustomDateTimeSelector(
+              selectedSlot: controller.selectedSlot.value,
+              onSlotSelected: controller.setSlot,
+              dateTimeSlots: const [
+                {
+                  "date": "Tuesday, January 22, 2026",
+                  "times": ["11:00 AM"],
+                },
+                {
+                  "date": "Wednesday, January 21, 2026",
+                  "times": ["9:00 AM", "4:00 PM"],
+                },
+                {
+                  "date": "Friday, January 23, 2026",
+                  "times": ["10:00 AM"],
+                },
+              ],
+            ),
+          ),
+          SizedBox(height: 24.h),
+
+          // Additional Notes
+          CustomAdditionalNotes(controller: controller.notesController),
+          SizedBox(height: 28.h),
+
+          // Continue to Payment Button
+          SizedBox(
+            width: double.infinity,
+            child: CustomElevatedBtn(
+              btnTitle: "Proceed to Payment",
+              onPressed: controller.proceedToPayment,
+            ),
+          ),
+          SizedBox(height: 16.h),
+        ],
       ),
     );
   }

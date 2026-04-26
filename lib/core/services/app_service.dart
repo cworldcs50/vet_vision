@@ -15,16 +15,10 @@ class AppServices extends GetxService {
 
 Future<void> initServices() async {
   await Get.putAsync(() => AppServices().init());
-  // final result =
   await SupabaseService().initSupabase(
     supabaseModel: const SupabaseModel(
       supabaseUrl: SecretConstants.kSupabaseUrl,
       supabaseAnonKey: SecretConstants.kSupabaseAnonKey,
     ),
   );
-
-  // result.fold(
-  //   (_) =>
-  //   (r) => r,
-  // );
 }

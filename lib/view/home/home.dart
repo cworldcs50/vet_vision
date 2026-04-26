@@ -1,136 +1,83 @@
 import 'package:get/get.dart';
 import 'widget/custom_home_body.dart';
-import 'widget/custom_home_icon.dart';
+import '../profile/profile_view.dart';
 import 'package:flutter/material.dart';
-import 'widget/custom_bottom_sheet.dart';
-import '../../core/theme/app_colors.dart';
+import '../bookings/bookings_view.dart';
+import '../messages/messages_view.dart';
 import '../../core/classes/adaptive_layout.dart';
 import '../../controller/home/home_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
-        actions: [
-          IconButton(
-            onPressed:
-                () => showModalBottomSheet(
-                  context: context,
-                  builder: (context) => const CustomBottomSheet(),
-                ),
-            icon: Icon(
-              Icons.settings_outlined,
-              size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 25),
-            ),
-          ),
-        ],
-        title: Text(
-          "VetVision",
-          style: TextStyle(
-            color: AppColors.primaryColor,
-            fontSize: AdaptiveLayout.getResponsiveFontSize(
-              context,
-              fontSize: 15,
-            ),
-          ),
-        ),
-        leading: Icon(
-          Icons.pets,
-          color: Colors.red,
-          size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 21),
-        ),
+      backgroundColor: const Color(0xFFF9F9F9),
+      body: GetBuilder<HomeController>(
+        builder: (controller) {
+          switch (controller.currentNavIndex) {
+            case 0:
+              return const CustomHomeBody();
+            case 1:
+              return const BookingsView();
+            case 2:
+              return const MessagesView();
+            case 3:
+              return const ProfileView();
+            default:
+              return const CustomHomeBody();
+          }
+        },
       ),
-      body: Column(
-        children: [
-          CustomHomeIcon(
-            iconSize: AdaptiveLayout.getResponsiveFontSize(
-              context,
-              fontSize: 25,
-            ),
-            backgroundWidth: AdaptiveLayout.getResponsiveFontSize(
-              context,
-              fontSize: 60,
-            ),
-            backgroundHeight: AdaptiveLayout.getResponsiveFontSize(
-              context,
-              fontSize: 60,
-            ),
-            iconColor: Colors.red,
-            icon: FontAwesomeIcons.hospital,
-          ),
-          10.verticalSpace,
-          Text(
-            "Welcome to VetVision",
-            style: TextStyle(
+      bottomNavigationBar: GetBuilder<HomeController>(
+        builder: (controller) {
+          return BottomNavigationBar(
+            currentIndex: controller.currentNavIndex,
+            onTap: controller.changeNavIndex,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: const Color(0xFF009689),
+            unselectedItemColor: Colors.grey,
+            showUnselectedLabels: true,
+            selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
               fontSize: AdaptiveLayout.getResponsiveFontSize(
                 context,
-                fontSize: 20,
+                fontSize: 10,
               ),
-              fontWeight: FontWeight.w500,
             ),
-          ),
-          5.verticalSpace,
-          Text(
-            "Your trusted veterinary platform",
-            style: TextStyle(
+            unselectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.normal,
               fontSize: AdaptiveLayout.getResponsiveFontSize(
                 context,
-                fontSize: 12,
+                fontSize: 10,
               ),
-              fontWeight: FontWeight.w400,
             ),
-          ),
-          30.verticalSpace,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-            child: CustomHomeBody(
-              goToMyPets: controller.goToMyPets,
-              goToHealthRecords: controller.goToHealthRecords,
-              goToBookAppointement: controller.goToBookAppointement,
-            ),
-          ),
-        ],
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                activeIcon: Icon(Icons.home),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today_outlined),
+                activeIcon: Icon(Icons.calendar_today),
+                label: "Bookings",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.message_outlined),
+                activeIcon: Icon(Icons.message),
+                label: "Messages",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                activeIcon: Icon(Icons.person),
+                label: "Profile",
+              ),
+            ],
+          );
+        },
       ),
     );
   }
 }
-
-/**
- * Material(
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              children: [
-                                const Text("Settings"),
-                                const Spacer(),
-                                IconButton(
-                                  onPressed: () => Get.back(),
-                                  icon: const Icon(Icons.close_sharp),
-                                ),
-                              ],
-                            ),
-                            15.verticalSpace,
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.public,
-                                  color: Colors.tealAccent,
-                                ),
-                                15.horizontalSpace,
-                                const Text("Language"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                
- */

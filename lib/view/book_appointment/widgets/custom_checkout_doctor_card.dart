@@ -6,16 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomCheckoutDoctorCard extends StatelessWidget {
   const CustomCheckoutDoctorCard({
     super.key,
-    required this.imgPath,
-    required this.doctorName,
-    required this.specialty,
     required this.price,
+    required this.imgPath,
+    required this.specialty,
+    required this.doctorName,
   });
 
-  final String imgPath;
-  final String doctorName;
-  final String specialty;
   final double price;
+  final String imgPath, specialty, doctorName;
 
   @override
   Widget build(BuildContext context) {

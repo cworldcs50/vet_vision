@@ -21,7 +21,7 @@ class OnBoardingController extends GetxController {
 
   Future<void> skip() async {
     await _sharedPrefs.setBool(CachingKeysConstants.kVisited, true);
-    await Get.offAllNamed(AppRoutesName.rSignIn);
+    await Get.offAllNamed(AppRoutesName.rRoleSelection);
   }
 
   Future<void> next() async {

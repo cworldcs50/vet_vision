@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../../core/classes/request_handler.dart';
 import '../../core/theme/app_colors.dart';
-import '../../controller/auth/sign_in_controller.dart';
+import '../../core/classes/request_handler.dart';
+import '../../core/classes/adaptive_layout.dart';
+import '../../controller/auth/auth_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgetPassword extends GetView<SignInController> {
+class ForgetPassword extends GetView<AuthController> {
   const ForgetPassword({super.key});
 
   @override
@@ -25,7 +26,10 @@ class ForgetPassword extends GetView<SignInController> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0XFF4A5565),
-                    fontSize: 20.sp,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
                 Padding(
@@ -38,12 +42,21 @@ class ForgetPassword extends GetView<SignInController> {
                     cursorColor: Colors.black,
                     cursorWidth: 2.w,
                     decoration: InputDecoration(
+                      hintStyle: TextStyle(
+                        fontSize: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 12,
+                        ),
+                      ),
                       hintText: "Enter Email to send token on it",
                       prefixIcon: IconButton(
                         onPressed: controller.forgetPassword,
                         icon: Icon(
                           Icons.email_outlined,
-                          size: 17.sp,
+                          size: AdaptiveLayout.getResponsiveFontSize(
+                            context,
+                            fontSize: 17,
+                          ),
                           color: const Color(0XFF999AAF),
                         ),
                       ),
