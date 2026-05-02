@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSessionTypeSelector extends StatelessWidget {
   const CustomSessionTypeSelector({
@@ -29,7 +28,7 @@ class CustomSessionTypeSelector extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
         Row(
           children: [
             Expanded(
@@ -41,7 +40,7 @@ class CustomSessionTypeSelector extends StatelessWidget {
                 onTap: () => onChanged("online"),
               ),
             ),
-            SizedBox(width: 12.w),
+            SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
             Expanded(
               child: _SessionTypeCard(
                 icon: Icons.person_outline,
@@ -87,7 +86,7 @@ class _SessionTypeCard extends StatelessWidget {
           vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
           border: Border.all(
             color: isSelected ? AppColors.primaryColor : Colors.grey.shade300,
             width: isSelected ? 2 : 1,
@@ -101,7 +100,7 @@ class _SessionTypeCard extends StatelessWidget {
           children: [
             if (isSelected)
               Padding(
-                padding: EdgeInsets.only(right: 6.w),
+                padding: EdgeInsets.only(right: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 6)),
                 child: Icon(
                   Icons.check_circle,
                   color: AppColors.primaryColor,
@@ -116,7 +115,7 @@ class _SessionTypeCard extends StatelessWidget {
               color: isSelected ? AppColors.primaryColor : Colors.grey.shade600,
               size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 18),
             ),
-            SizedBox(width: 6.w),
+            SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 6)),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +132,7 @@ class _SessionTypeCard extends StatelessWidget {
                           isSelected ? AppColors.primaryColor : Colors.black87,
                     ),
                   ),
-                  SizedBox(height: 2.h),
+                  SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2)),
                   Text(
                     subtitle,
                     style: TextStyle(

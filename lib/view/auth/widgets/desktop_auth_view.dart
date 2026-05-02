@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/auth/auth_controller.dart';
@@ -26,7 +25,9 @@ class DesktopAuthView extends StatelessWidget {
             validator: controller.fullNameValidator,
             controller: controller.fullNameController,
           ),
-          16.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+          ),
         ],
         Row(
           children: [
@@ -39,7 +40,12 @@ class DesktopAuthView extends StatelessWidget {
                 controller: controller.emailController,
               ),
             ),
-            16.horizontalSpace,
+            SizedBox(
+              width: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 16,
+              ),
+            ),
             Flexible(
               child: GetBuilder<AuthController>(
                 builder:
@@ -58,7 +64,9 @@ class DesktopAuthView extends StatelessWidget {
           ],
         ),
         if (!controller.isSignIn.value) ...[
-          16.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+          ),
           GetBuilder<AuthController>(
             builder:
                 (c) => CustomTextFormField(
@@ -88,7 +96,9 @@ class DesktopAuthView extends StatelessWidget {
             ),
           ),
         ] else
-          24.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+          ),
         CustomAuthButton(
           onPressed:
               controller.isSignIn.value ? controller.signIn : controller.signUp,
@@ -101,12 +111,19 @@ class DesktopAuthView extends StatelessWidget {
             ),
           ),
         ),
-        24.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+        ),
         Row(
           children: [
             Expanded(child: Divider(color: Colors.grey.shade300)),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              padding: EdgeInsets.symmetric(
+                horizontal: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 10,
+                ),
+              ),
               child: const Text(
                 "or continue with",
                 style: TextStyle(color: Colors.grey),
@@ -115,7 +132,9 @@ class DesktopAuthView extends StatelessWidget {
             Expanded(child: Divider(color: Colors.grey.shade300)),
           ],
         ),
-        20.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+        ),
         Row(
           children: [
             Expanded(
@@ -149,7 +168,12 @@ class DesktopAuthView extends StatelessWidget {
                 ),
               ),
             ),
-            16.horizontalSpace,
+            SizedBox(
+              width: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 16,
+              ),
+            ),
             Expanded(
               child: CustomAuthButton(
                 onPressed: controller.authWithFacebook,
@@ -177,7 +201,9 @@ class DesktopAuthView extends StatelessWidget {
             ),
           ],
         ),
-        24.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+        ),
         Center(
           child: GestureDetector(
             onTap: () => controller.toggleTab(!controller.isSignIn.value),
@@ -215,4 +241,3 @@ class DesktopAuthView extends StatelessWidget {
     );
   }
 }
-

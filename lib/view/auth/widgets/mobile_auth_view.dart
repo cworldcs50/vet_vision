@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
-import '../../../core/classes/adaptive_layout.dart';
-import '../../../core/constants/images_constants.dart';
 import 'custom_auth_button.dart';
 import 'custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import '../../../core/classes/adaptive_layout.dart';
+import '../../../core/constants/images_constants.dart';
 import '../../../controller/auth/auth_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MobileAuthView extends StatelessWidget {
   const MobileAuthView({super.key, required this.controller});
@@ -19,7 +18,9 @@ class MobileAuthView extends StatelessWidget {
       children: [
         if (!controller.isSignIn.value) ...[
           Padding(
-            padding: EdgeInsets.all(5.w),
+            padding: EdgeInsets.all(
+              AdaptiveLayout.getResponsiveFontSize(context, fontSize: 5),
+            ),
             child: CustomTextFormField(
               hint: "John Doe",
               label: "Full Name",
@@ -28,10 +29,14 @@ class MobileAuthView extends StatelessWidget {
               controller: controller.fullNameController,
             ),
           ),
-          16.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+          ),
         ],
         Padding(
-          padding: EdgeInsets.all(5.w),
+          padding: EdgeInsets.all(
+            AdaptiveLayout.getResponsiveFontSize(context, fontSize: 5),
+          ),
           child: CustomTextFormField(
             label: "Email Address",
             hint: "you@example.com",
@@ -40,7 +45,9 @@ class MobileAuthView extends StatelessWidget {
             controller: controller.emailController,
           ),
         ),
-        16.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+        ),
         GetBuilder<AuthController>(
           builder:
               (c) => CustomTextFormField(
@@ -55,7 +62,9 @@ class MobileAuthView extends StatelessWidget {
               ),
         ),
         if (!controller.isSignIn.value) ...[
-          16.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+          ),
           GetBuilder<AuthController>(
             builder:
                 (c) => CustomTextFormField(
@@ -84,8 +93,11 @@ class MobileAuthView extends StatelessWidget {
               ),
             ),
           ),
-        ] else
-          24.verticalSpace,
+        ] else ...[
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+          ),
+        ],
         CustomAuthButton(
           onPressed:
               controller.isSignIn.value ? controller.signIn : controller.signUp,
@@ -98,12 +110,19 @@ class MobileAuthView extends StatelessWidget {
             ),
           ),
         ),
-        24.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+        ),
         Row(
           children: [
             Expanded(child: Divider(color: Colors.grey.shade300)),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              padding: EdgeInsets.symmetric(
+                horizontal: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 10,
+                ),
+              ),
               child: const Text(
                 "or continue with",
                 style: TextStyle(color: Colors.grey),
@@ -112,7 +131,9 @@ class MobileAuthView extends StatelessWidget {
             Expanded(child: Divider(color: Colors.grey.shade300)),
           ],
         ),
-        20.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+        ),
         Row(
           children: [
             Expanded(
@@ -146,7 +167,12 @@ class MobileAuthView extends StatelessWidget {
                 ),
               ),
             ),
-            16.horizontalSpace,
+            SizedBox(
+              width: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 16,
+              ),
+            ),
             Expanded(
               child: CustomAuthButton(
                 onPressed: controller.authWithFacebook,
@@ -174,7 +200,9 @@ class MobileAuthView extends StatelessWidget {
             ),
           ],
         ),
-        24.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+        ),
         Center(
           child: GestureDetector(
             onTap: () => controller.toggleTab(!controller.isSignIn.value),

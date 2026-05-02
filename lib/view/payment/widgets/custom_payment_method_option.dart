@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -27,10 +26,10 @@ class CustomPaymentMethodOption extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(value),
       child: Container(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
           border: Border.all(
             color: isSelected ? const Color(0xFF009689) : Colors.grey.shade300,
             width: isSelected ? 2 : 1,
@@ -42,7 +41,7 @@ class CustomPaymentMethodOption extends StatelessWidget {
               icon,
               color: isSelected ? const Color(0xFF009689) : Colors.grey,
             ),
-            SizedBox(width: 16.w),
+            SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

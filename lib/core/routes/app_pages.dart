@@ -5,7 +5,6 @@ import '../../view/home/home.dart';
 import 'on_boarding_middleware.dart';
 import '../../view/splash/logo.dart';
 import '../../view/auth/auth_view.dart';
-import '../../view/my_pets/my_pets.dart';
 import '../../view/auth/role_selection.dart';
 import '../../view/auth/forget_password.dart';
 import '../../view/payment/payment_view.dart';
@@ -15,8 +14,8 @@ import '../../view/onboarding/onboarding_view.dart';
 import '../../view/health_records/health_records.dart';
 import '../../view/book_appointment/doctor_profile.dart';
 import '../../view/book_appointment/book_appointment.dart';
-import '../../view/doctor_view/doctor_login_view.dart';
-import '../../view/doctor_view/doctor_registration_view.dart';
+import '../../view/doctor_view/portal/doctor_login_view.dart';
+import '../../view/doctor_view/portal/doctor_registration_view.dart';
 import '../../view/doctor_view/portal/doctor_portal_main_view.dart';
 
 List<GetPage> kAppPages = [
@@ -45,7 +44,6 @@ List<GetPage> kAppPages = [
     page: () => const BookAppointment(),
     name: AppRoutesName.rBookAppointment,
   ),
-  GetPage(name: AppRoutesName.rMyPets, page: () => const MyPets()),
   GetPage(
     page: () => const HealthRecords(),
     name: AppRoutesName.rHealthRecords,

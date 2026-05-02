@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAdditionalNotes extends StatelessWidget {
   const CustomAdditionalNotes({super.key, required this.controller});
@@ -20,7 +19,7 @@ class CustomAdditionalNotes extends StatelessWidget {
               size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 18),
               color: AppColors.primaryColor,
             ),
-            SizedBox(width: 6.w),
+            SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 6)),
             Text(
               "Additional Notes (Optional)",
               style: TextStyle(
@@ -34,7 +33,7 @@ class CustomAdditionalNotes extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
         TextField(
           controller: controller,
           maxLines: 3,
@@ -58,19 +57,19 @@ class CustomAdditionalNotes extends StatelessWidget {
             filled: true,
             fillColor: Colors.grey.shade50,
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 14.w,
-              vertical: 12.h,
+              horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: BorderSide(color: Colors.grey.shade200),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: BorderSide(color: Colors.grey.shade200),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: const BorderSide(
                 color: AppColors.primaryColor,
                 width: 1.5,

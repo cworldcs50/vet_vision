@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/home/home_controller.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -24,8 +23,7 @@ class CustomDoctorCard extends GetView<HomeController> {
           ),
           boxShadow: [
             BoxShadow(
-              // ignore: deprecated_member_use
-              color: Colors.black.withOpacity(0.04),
+              color: Colors.black.withValues(alpha: 0.04),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -52,7 +50,7 @@ class CustomDoctorCard extends GetView<HomeController> {
                 fit: BoxFit.cover,
               ),
             ),
-            // 12.horizontalSpace,
+            // AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)orizontalSpace,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +82,12 @@ class CustomDoctorCard extends GetView<HomeController> {
                       ),
                     ],
                   ),
-                  4.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 4,
+                    ),
+                  ),
                   Text(
                     doctor.specialization,
                     style: TextStyle(
@@ -95,7 +98,12 @@ class CustomDoctorCard extends GetView<HomeController> {
                       ),
                     ),
                   ),
-                  8.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 8,
+                    ),
+                  ),
                   Row(
                     children: [
                       Icon(
@@ -106,7 +114,12 @@ class CustomDoctorCard extends GetView<HomeController> {
                           fontSize: 16,
                         ),
                       ),
-                      4.horizontalSpace,
+                      SizedBox(
+                        height: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 4,
+                        ),
+                      ),
                       Text(
                         "${doctor.rating} (${doctor.reviews})",
                         style: TextStyle(
@@ -117,7 +130,12 @@ class CustomDoctorCard extends GetView<HomeController> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      12.horizontalSpace,
+                      SizedBox(
+                        width: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 12,
+                        ),
+                      ),
                       Icon(
                         Icons.location_on,
                         color: Colors.grey.shade400,
@@ -126,7 +144,12 @@ class CustomDoctorCard extends GetView<HomeController> {
                           fontSize: 16,
                         ),
                       ),
-                      4.horizontalSpace,
+                      SizedBox(
+                        width: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 4,
+                        ),
+                      ),
                       Text(
                         "${doctor.distance} km",
                         style: TextStyle(

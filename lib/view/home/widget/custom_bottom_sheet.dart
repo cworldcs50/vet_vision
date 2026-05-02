@@ -2,9 +2,10 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../../../core/services/app_service.dart';
 import '../../../core/routes/app_routes_name.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/caching_keys_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({super.key});
@@ -12,10 +13,10 @@ class CustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(15.r),
+      borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 15)),
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+        padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10.0)),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -31,29 +32,49 @@ class CustomBottomSheet extends StatelessWidget {
                   ),
                 ],
               ),
-              15.verticalSpace,
+              SizedBox(
+                height: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 15,
+                ),
+              ),
               Row(
                 children: [
                   const Icon(Icons.public, color: Colors.tealAccent),
-                  15.horizontalSpace,
+                  SizedBox(
+                    width: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 15,
+                    ),
+                  ),
                   const Text("Language"),
                 ],
               ),
-              15.verticalSpace,
+              SizedBox(
+                height: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 15,
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   alignment: Alignment.centerLeft,
-                  minimumSize: Size(double.infinity, 50.h),
+                  minimumSize: Size(double.infinity, AdaptiveLayout.getResponsiveFontSize(context, fontSize: 50)),
                 ),
                 child: const Text("English"),
               ),
-              8.verticalSpace,
+              SizedBox(
+                height: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 8,
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   alignment: Alignment.centerLeft,
-                  minimumSize: Size(double.infinity, 50.h),
+                  minimumSize: Size(double.infinity, AdaptiveLayout.getResponsiveFontSize(context, fontSize: 50)),
                 ),
                 child: const Text("Arabic"),
               ),
@@ -70,7 +91,7 @@ class CustomBottomSheet extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   alignment: Alignment.centerLeft,
-                  minimumSize: Size(double.infinity, 50.h),
+                  minimumSize: Size(double.infinity, AdaptiveLayout.getResponsiveFontSize(context, fontSize: 50)),
                   iconColor: Colors.red,
                   foregroundColor: Colors.red,
                   shape: const RoundedRectangleBorder(),

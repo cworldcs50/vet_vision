@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
 class CustomHomeHeader extends StatelessWidget {
@@ -24,7 +23,13 @@ class CustomHomeHeader extends StatelessWidget {
                 ),
               ),
             ),
-            5.verticalSpace,
+            // 5.verticalSpace,
+            SizedBox(
+              height: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 5,
+              ),
+            ),
             Text(
               "Find Your Vet",
               style: TextStyle(
@@ -58,7 +63,12 @@ class CustomHomeHeader extends StatelessWidget {
                 ),
               ),
             ),
-            12.horizontalSpace,
+            SizedBox(
+              width: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 12,
+              ),
+            ),
             CircleAvatar(
               radius: AdaptiveLayout.getResponsiveFontSize(
                 context,

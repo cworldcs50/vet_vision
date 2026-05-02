@@ -5,8 +5,9 @@ import 'custom_date_time_selector.dart';
 import 'custom_checkout_doctor_card.dart';
 import 'custom_session_type_selector.dart';
 import 'custom_elevated_btn.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/book_appointment/checkout_controller.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class DesktopCheckout extends GetView<CheckoutController> {
   const DesktopCheckout({super.key});
@@ -15,9 +16,9 @@ class DesktopCheckout extends GetView<CheckoutController> {
   Widget build(BuildContext context) {
     Get.put(CheckoutController());
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 40.w),
+      padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 40)),
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16), vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,7 +28,7 @@ class DesktopCheckout extends GetView<CheckoutController> {
               doctorName: "Dr. Michael Chen",
               imgPath: "assets/images/doctor.png",
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
             Obx(
               () => CustomSessionTypeSelector(
@@ -35,7 +36,7 @@ class DesktopCheckout extends GetView<CheckoutController> {
                 onChanged: controller.setSessionType,
               ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
             // Date & Time
             Obx(
@@ -58,11 +59,11 @@ class DesktopCheckout extends GetView<CheckoutController> {
                 ],
               ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
             // Additional Notes
             CustomAdditionalNotes(controller: controller.notesController),
-            SizedBox(height: 28.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 28)),
 
             // Continue to Payment Button
             SizedBox(
@@ -72,7 +73,7 @@ class DesktopCheckout extends GetView<CheckoutController> {
                 onPressed: controller.proceedToPayment,
               ),
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
           ],
         ),
       ),

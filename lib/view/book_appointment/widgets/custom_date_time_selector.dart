@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDateTimeSelector extends StatelessWidget {
   const CustomDateTimeSelector({
@@ -32,7 +31,7 @@ class CustomDateTimeSelector extends StatelessWidget {
               size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 18),
               color: AppColors.primaryColor,
             ),
-            SizedBox(width: 6.w),
+            SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 6)),
             Text(
               "Select Date & Time",
               style: TextStyle(
@@ -46,7 +45,7 @@ class CustomDateTimeSelector extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 16.h),
+        SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
         ...dateTimeSlots.map(
           (dateGroup) => _buildDateGroup(context, dateGroup),
         ),
@@ -59,7 +58,7 @@ class CustomDateTimeSelector extends StatelessWidget {
     final List<String> times = List<String>.from(dateGroup["times"] as List);
 
     return Padding(
-      padding: EdgeInsets.only(bottom: 16.h),
+      padding: EdgeInsets.only(bottom: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -74,10 +73,10 @@ class CustomDateTimeSelector extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
           Wrap(
-            spacing: 10.w,
-            runSpacing: 8.h,
+            spacing: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+            runSpacing: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
             children:
                 times.map((time) {
                   final String slotKey = "$date|$time";
@@ -102,7 +101,7 @@ class CustomDateTimeSelector extends StatelessWidget {
                             isSelected
                                 ? AppColors.primaryColor
                                 : Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(10.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10)),
                         border:
                             isSelected
                                 ? null

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -12,10 +11,10 @@ class CustomInfoBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.all(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
       decoration: BoxDecoration(
         color: const Color(0xFF009689).withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +24,7 @@ class CustomInfoBox extends StatelessWidget {
             color: const Color(0xFF009689),
             size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
           ),
-          SizedBox(width: 12.w),
+          SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
           Expanded(
             child: Text(
               text,

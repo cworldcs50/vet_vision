@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCheckoutDoctorCard extends StatelessWidget {
   const CustomCheckoutDoctorCard({
@@ -23,7 +22,7 @@ class CustomCheckoutDoctorCard extends StatelessWidget {
           radius: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
           backgroundImage: AssetImage(imgPath),
         ),
-        SizedBox(width: 12.w),
+        SizedBox(width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +38,7 @@ class CustomCheckoutDoctorCard extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 2.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2)),
               Text(
                 specialty,
                 style: TextStyle(
@@ -51,7 +50,7 @@ class CustomCheckoutDoctorCard extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: 2.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2)),
               Text(
                 "\$${price.toStringAsFixed(0)} per session",
                 style: TextStyle(

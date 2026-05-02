@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../controller/bookings/bookings_controller.dart';
-import '../../core/classes/adaptive_layout.dart';
+import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/classes/adaptive_layout.dart';
+import '../../controller/bookings/bookings_controller.dart';
 
 class BookingsView extends StatelessWidget {
   const BookingsView({super.key});
@@ -62,7 +61,12 @@ class BookingsView extends StatelessWidget {
                                 isSelected
                                     ? AppColors.primaryColor
                                     : Colors.grey[100],
-                            borderRadius: BorderRadius.circular(20.r),
+                            borderRadius: BorderRadius.circular(
+                              AdaptiveLayout.getResponsiveFontSize(
+                                context,
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                           child: Center(
                             child: Text(
@@ -82,18 +86,33 @@ class BookingsView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 8.w),
+                    SizedBox(
+                      width: AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 8,
+                      ),
+                    ),
                     Expanded(
                       child: GestureDetector(
                         onTap: () => controller.changeTab(1),
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 12.h),
+                          padding: EdgeInsets.symmetric(
+                            vertical: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 12,
+                            ),
+                          ),
                           decoration: BoxDecoration(
                             color:
                                 !isSelected
                                     ? AppColors.primaryColor
                                     : Colors.grey[100],
-                            borderRadius: BorderRadius.circular(20.r),
+                            borderRadius: BorderRadius.circular(
+                              AdaptiveLayout.getResponsiveFontSize(
+                                context,
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                           child: Center(
                             child: Text(
@@ -132,19 +151,40 @@ class BookingsView extends StatelessWidget {
                           ),
                           itemCount: 2,
                           separatorBuilder:
-                              (context, index) => 20.verticalSpace,
+                              (context, index) => SizedBox(
+                                height: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 20,
+                                ),
+                              ),
                           itemBuilder: (context, index) {
                             return Container(
                               padding: EdgeInsets.symmetric(
-                                vertical: 16.h,
-                                horizontal: 16.w,
+                                vertical: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 16,
+                                ),
+                                horizontal:
+                                    AdaptiveLayout.getResponsiveFontSize(
+                                      context,
+                                      fontSize: 16,
+                                    ),
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.r),
+                                borderRadius: BorderRadius.circular(
+                                  AdaptiveLayout.getResponsiveFontSize(
+                                    context,
+                                    fontSize: 16,
+                                  ),
+                                ),
                                 boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 10.r,
+                                    blurRadius:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 10,
+                                        ),
                                     offset: const Offset(0, 4),
                                     color: Colors.black.withValues(alpha: 0.05),
                                   ),
@@ -183,7 +223,10 @@ class BookingsView extends StatelessWidget {
                                                       .withValues(alpha: 0.1)
                                                   : Colors.grey[200],
                                           borderRadius: BorderRadius.circular(
-                                            20.r,
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 20,
+                                            ),
                                           ),
                                         ),
                                         child: Text(
@@ -204,11 +247,21 @@ class BookingsView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 12.h),
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 12,
+                                        ),
+                                  ),
                                   Row(
                                     children: [
                                       CircleAvatar(
-                                        radius: 20.r,
+                                        radius:
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 20,
+                                            ),
                                         backgroundColor: AppColors.primaryColor
                                             .withValues(alpha: 0.2),
                                         child: Icon(
@@ -221,7 +274,13 @@ class BookingsView extends StatelessWidget {
                                               ),
                                         ),
                                       ),
-                                      SizedBox(width: 12.w),
+                                      SizedBox(
+                                        width:
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 12,
+                                            ),
+                                      ),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -252,9 +311,21 @@ class BookingsView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 12.h),
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 12,
+                                        ),
+                                  ),
                                   const Divider(),
-                                  SizedBox(height: 8.h),
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 8,
+                                        ),
+                                  ),
                                   Row(
                                     children: [
                                       Icon(
@@ -266,7 +337,13 @@ class BookingsView extends StatelessWidget {
                                             ),
                                         color: Colors.grey[600],
                                       ),
-                                      5.horizontalSpace,
+                                      SizedBox(
+                                        width:
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 5,
+                                            ),
+                                      ),
                                       Text(
                                         "10:00 AM",
                                         style: TextStyle(
@@ -284,8 +361,12 @@ class BookingsView extends StatelessWidget {
                                               color: AppColors.primaryColor,
                                             ),
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.r),
+                                              borderRadius: BorderRadius.circular(
+                                                AdaptiveLayout.getResponsiveFontSize(
+                                                  context,
+                                                  fontSize: 8,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                           child: const Text("Reschedule"),
@@ -310,19 +391,40 @@ class BookingsView extends StatelessWidget {
                             ),
                           ),
                           separatorBuilder:
-                              (context, index) => 20.verticalSpace,
+                              (context, index) => SizedBox(
+                                height: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 20,
+                                ),
+                              ),
                           itemBuilder: (context, index) {
                             return Container(
                               padding: EdgeInsets.symmetric(
-                                vertical: 16.h,
-                                horizontal: 16.w,
+                                vertical: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 16,
+                                ),
+                                horizontal:
+                                    AdaptiveLayout.getResponsiveFontSize(
+                                      context,
+                                      fontSize: 16,
+                                    ),
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.r),
+                                borderRadius: BorderRadius.circular(
+                                  AdaptiveLayout.getResponsiveFontSize(
+                                    context,
+                                    fontSize: 16,
+                                  ),
+                                ),
                                 boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 10.r,
+                                    blurRadius:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 10,
+                                        ),
                                     offset: const Offset(0, 4),
                                     color: Colors.black.withValues(alpha: 0.05),
                                   ),
@@ -355,7 +457,10 @@ class BookingsView extends StatelessWidget {
                                                       .withValues(alpha: 0.1)
                                                   : Colors.grey[200],
                                           borderRadius: BorderRadius.circular(
-                                            20.r,
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 20,
+                                            ),
                                           ),
                                         ),
                                         child: Text(
@@ -376,7 +481,13 @@ class BookingsView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  25.verticalSpace,
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 25,
+                                        ),
+                                  ),
                                   Row(
                                     children: [
                                       CircleAvatar(
@@ -430,9 +541,21 @@ class BookingsView extends StatelessWidget {
                                     ],
                                   ),
                                   // const Spacer(flex: 2),
-                                  12.verticalSpace,
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 12,
+                                        ),
+                                  ),
                                   const Divider(),
-                                  8.verticalSpace,
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 8,
+                                        ),
+                                  ),
                                   // const Spacer(),
                                   Row(
                                     children: [
@@ -445,7 +568,13 @@ class BookingsView extends StatelessWidget {
                                             ),
                                         color: Colors.grey[600],
                                       ),
-                                      5.horizontalSpace,
+                                      SizedBox(
+                                        width:
+                                            AdaptiveLayout.getResponsiveFontSize(
+                                              context,
+                                              fontSize: 5,
+                                            ),
+                                      ),
                                       Text(
                                         "02:00 PM",
                                         style: TextStyle(
@@ -503,201 +632,3 @@ class BookingsView extends StatelessWidget {
   }
 }
 
-class BookingCard extends StatelessWidget {
-  final String date;
-  final String doctorName;
-  final String specialization;
-  final String time;
-  final String status;
-
-  const BookingCard({
-    super.key,
-    required this.date,
-    required this.doctorName,
-    required this.specialization,
-    required this.time,
-    required this.status,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    bool isUpcoming = status == "Upcoming";
-
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 10.r,
-            offset: const Offset(0, 4),
-            color: Colors.black.withValues(alpha: 0.05),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                date,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: AdaptiveLayout.getResponsiveFontSize(
-                    context,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: AdaptiveLayout.getResponsiveFontSize(
-                    context,
-                    fontSize: 4,
-                  ),
-                  horizontal: AdaptiveLayout.getResponsiveFontSize(
-                    context,
-                    fontSize: 12,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color:
-                      isUpcoming
-                          ? AppColors.primaryColor.withValues(alpha: .1)
-                          : Colors.grey[200],
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: Text(
-                  status,
-                  style: TextStyle(
-                    color:
-                        isUpcoming ? AppColors.primaryColor : Colors.grey[700],
-                    fontWeight: FontWeight.w600,
-                    fontSize: AdaptiveLayout.getResponsiveFontSize(
-                      context,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          const Spacer(flex: 2),
-
-          /// Doctor Info
-          Row(
-            children: [
-              CircleAvatar(
-                radius: AdaptiveLayout.getResponsiveFontSize(
-                  context,
-                  fontSize: 20,
-                ),
-                backgroundColor: AppColors.primaryColor.withValues(alpha: .2),
-                child: Icon(
-                  Icons.person,
-                  color: AppColors.primaryColor,
-                  size: AdaptiveLayout.getResponsiveFontSize(
-                    context,
-                    fontSize: 22,
-                  ),
-                ),
-              ),
-              const Spacer(),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      doctorName,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: AdaptiveLayout.getResponsiveFontSize(
-                          context,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      specialization,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: AdaptiveLayout.getResponsiveFontSize(
-                          context,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          const Spacer(flex: 2),
-
-          const Divider(),
-
-          const Spacer(),
-
-          Row(
-            children: [
-              Icon(
-                Icons.access_time,
-                color: Colors.grey[600],
-                size: AdaptiveLayout.getResponsiveFontSize(
-                  context,
-                  fontSize: 16,
-                ),
-              ),
-
-              const Spacer(),
-
-              Text(
-                time,
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: AdaptiveLayout.getResponsiveFontSize(
-                    context,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-
-              const Spacer(),
-
-              if (isUpcoming)
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.primaryColor,
-                    side: const BorderSide(color: AppColors.primaryColor),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        AdaptiveLayout.getResponsiveFontSize(
-                          context,
-                          fontSize: 8,
-                        ),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    "Reschedule",
-                    style: TextStyle(
-                      fontSize: AdaptiveLayout.getResponsiveFontSize(
-                        context,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}

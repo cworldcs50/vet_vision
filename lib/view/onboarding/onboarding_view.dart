@@ -1,5 +1,5 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../core/classes/adaptive_layout.dart';
 import 'widgets/custom_slider.dart';
 import 'widgets/custom_page_view.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,12 @@ class OnboardingView extends GetView<OnBoardingController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const CustomSlider(),
-                15.verticalSpace,
+                SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
+                ),
                 GetBuilder<OnBoardingController>(
                   builder: (controller) {
                     return CustomElevatedButton(

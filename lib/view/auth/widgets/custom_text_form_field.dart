@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -47,7 +45,9 @@ class CustomTextFormField extends StatelessWidget {
             ),
           ],
         ),
-        5.verticalSpace,
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 5),
+        ),
         TextFormField(
           controller: controller,
           obscureText: obscureText,
@@ -63,22 +63,23 @@ class CustomTextFormField extends StatelessWidget {
             ),
           ),
           cursorColor: Colors.black,
-          cursorWidth: 2.w,
+          cursorWidth: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2),
           decoration: InputDecoration(
             hintText: hint,
-            suffixIcon: suffixIcon != null
-                ? IconButton(
-                    onPressed: onPressed,
-                    icon: Icon(
-                      suffixIcon,
-                      size: AdaptiveLayout.getResponsiveFontSize(
-                        context,
-                        fontSize: 17,
+            suffixIcon:
+                suffixIcon != null
+                    ? IconButton(
+                      onPressed: onPressed,
+                      icon: Icon(
+                        suffixIcon,
+                        size: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 17,
+                        ),
+                        color: const Color(0XFF999AAF),
                       ),
-                      color: const Color(0XFF999AAF),
-                    ),
-                  )
-                : null,
+                    )
+                    : null,
             alignLabelWithHint: true,
             focusColor: const Color(0XFF999AAF),
             prefixIcon: Icon(
@@ -88,33 +89,53 @@ class CustomTextFormField extends StatelessWidget {
             ),
             prefixIconColor: const Color(0XFF999AAF),
             contentPadding:
-                maxLines! > 1 ? EdgeInsets.all(12.w) : EdgeInsets.zero,
+                maxLines! > 1
+                    ? EdgeInsets.all(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 12,
+                      ),
+                    )
+                    : EdgeInsets.zero,
             filled: true,
             fillColor: const Color(0XFFf3f3f5),
             border: OutlineInputBorder(
               borderSide: BorderSide(
                 color: const Color(0XFF999AAF),
-                width: 2.w,
+                width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2),
               ),
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              ),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Color(0XFF999AAF)),
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: const Color(0XFF999AAF),
-                width: 2.w,
+                width: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 2,
+                ),
               ),
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              ),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
+              ),
             ),
           ),
         ),

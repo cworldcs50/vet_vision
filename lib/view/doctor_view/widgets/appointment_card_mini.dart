@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../data/models/doctor_appointment_model.dart';
+import '../../../data/models/doctor_appointment_model.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
 
 class AppointmentCardMini extends StatelessWidget {
   final DoctorAppointmentModel appointment;
@@ -10,27 +10,39 @@ class AppointmentCardMini extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12.w),
+      padding: EdgeInsets.all(
+        AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(
+          AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+        ),
         border: Border.all(color: Colors.grey.shade100),
       ),
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(8.w),
+            padding: EdgeInsets.all(
+              AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
+            ),
             decoration: BoxDecoration(
               color: const Color(0xFF009689).withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+              ),
             ),
             child: Icon(
-              appointment.isOnline ? Icons.videocam_outlined : Icons.location_on_outlined,
+              appointment.isOnline
+                  ? Icons.videocam_outlined
+                  : Icons.location_on_outlined,
               color: const Color(0xFF009689),
-              size: 20.w,
+              size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
             ),
           ),
-          12.horizontalSpace,
+          SizedBox(
+            width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +50,10 @@ class AppointmentCardMini extends StatelessWidget {
                 Text(
                   appointment.patientName,
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 14,
+                    ),
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
@@ -46,15 +61,26 @@ class AppointmentCardMini extends StatelessWidget {
                 Text(
                   "${appointment.petName} • ${appointment.petType}",
                   style: TextStyle(
-                    fontSize: 12.sp,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 12,
+                    ),
                     color: Colors.black54,
                   ),
                 ),
-                4.verticalSpace,
+                SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 4,
+                  ),
+                ),
                 Text(
                   appointment.notes,
                   style: TextStyle(
-                    fontSize: 11.sp,
+                    fontSize: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 11,
+                    ),
                     color: Colors.grey.shade400,
                   ),
                   maxLines: 1,
@@ -69,7 +95,10 @@ class AppointmentCardMini extends StatelessWidget {
               Text(
                 appointment.time,
                 style: TextStyle(
-                  fontSize: 12.sp,
+                  fontSize: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 12,
+                  ),
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF009689),
                 ),
@@ -77,7 +106,10 @@ class AppointmentCardMini extends StatelessWidget {
               Text(
                 appointment.isOnline ? "Online" : "In-Person",
                 style: TextStyle(
-                  fontSize: 10.sp,
+                  fontSize: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 10,
+                  ),
                   color: Colors.black54,
                 ),
               ),

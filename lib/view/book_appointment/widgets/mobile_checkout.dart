@@ -6,7 +6,6 @@ import 'custom_date_time_selector.dart';
 import '../../../core/classes/adaptive_layout.dart';
 import 'custom_checkout_doctor_card.dart';
 import 'custom_session_type_selector.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/book_appointment/checkout_controller.dart';
 
 class MobileCheckout extends GetView<CheckoutController> {
@@ -18,7 +17,7 @@ class MobileCheckout extends GetView<CheckoutController> {
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
         horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
-        vertical: 8.h,
+        vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +29,7 @@ class MobileCheckout extends GetView<CheckoutController> {
             doctorName: "Dr. Michael Chen",
             imgPath: "assets/images/doctor.png",
           ),
-          SizedBox(height: 24.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
           // Session Type
           Obx(
@@ -39,7 +38,7 @@ class MobileCheckout extends GetView<CheckoutController> {
               onChanged: controller.setSessionType,
             ),
           ),
-          SizedBox(height: 24.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
           // Date & Time
           Obx(
@@ -62,11 +61,11 @@ class MobileCheckout extends GetView<CheckoutController> {
               ],
             ),
           ),
-          SizedBox(height: 24.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
 
           // Additional Notes
           CustomAdditionalNotes(controller: controller.notesController),
-          SizedBox(height: 28.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 28)),
 
           // Continue to Payment Button
           SizedBox(
@@ -76,7 +75,7 @@ class MobileCheckout extends GetView<CheckoutController> {
               onPressed: controller.proceedToPayment,
             ),
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
         ],
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/classes/adaptive_layout.dart';
 import '../../../core/theme/app_colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomHomeTitle extends StatelessWidget {
   const CustomHomeTitle({required this.onTap, super.key});
@@ -17,7 +16,9 @@ class CustomHomeTitle extends StatelessWidget {
       children: [
         Flexible(
           child: Padding(
-            padding: EdgeInsets.only(top: 8.0.h),
+            padding: EdgeInsets.only(
+              top: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8.0),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,9 +26,20 @@ class CustomHomeTitle extends StatelessWidget {
                 InkWell(
                   onTap: onTap,
                   child: Container(
-                    width: 35.w,
-                    height: 35.h,
-                    margin: EdgeInsets.only(left: 10.w),
+                    width: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 35,
+                    ),
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 35,
+                    ),
+                    margin: EdgeInsets.only(
+                      left: AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 10,
+                      ),
+                    ),
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -43,7 +55,12 @@ class CustomHomeTitle extends StatelessWidget {
                     ),
                   ),
                 ),
-                5.horizontalSpace,
+                SizedBox(
+                  width: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 5,
+                  ),
+                ),
                 Text(
                   "VetVision",
                   style: TextStyle(

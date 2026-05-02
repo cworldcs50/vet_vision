@@ -5,7 +5,6 @@ import '../../core/theme/app_colors.dart';
 import 'widgets/custom_setting_option.dart';
 import '../../core/classes/adaptive_layout.dart';
 import '../../controller/profile/profile_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
@@ -34,12 +33,12 @@ class ProfileView extends GetView<ProfileController> {
           children: [
             Container(
               color: Colors.white,
-              padding: EdgeInsets.symmetric(vertical: 24.h),
+              padding: EdgeInsets.symmetric(vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
               width: double.infinity,
               child: Column(
                 children: [
                   CircleAvatar(
-                    radius: 40.r,
+                    radius: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 40),
                     backgroundColor: AppColors.primaryColor.withValues(
                       alpha: 0.1,
                     ),
@@ -52,7 +51,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
                   Text(
                     "User Name",
                     style: TextStyle(
@@ -63,22 +62,22 @@ class ProfileView extends GetView<ProfileController> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 4)),
                   Text(
                     "user@example.com",
                     style: TextStyle(color: Colors.grey[600]),
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20)),
                       ),
                       padding: EdgeInsets.symmetric(
-                        horizontal: 24.w,
-                        vertical: 8.h,
+                        horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
+                        vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
                       ),
                     ),
                     child: const Text("Edit Profile"),
@@ -86,12 +85,11 @@ class ProfileView extends GetView<ProfileController> {
                 ],
               ),
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
             const CustomSection(
               title: "General",
               items: [
                 CustomSettingOption(icon: Icons.pets, title: "My Pets"),
-
                 CustomSettingOption(
                   icon: Icons.favorite_border,
                   title: "Favorite Doctors",
@@ -102,7 +100,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ],
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
             const CustomSection(
               title: "Settings",
               items: [
@@ -123,7 +121,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ],
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
           ],
         ),
       ),

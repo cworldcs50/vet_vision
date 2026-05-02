@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../controller/messages/messages_controller.dart';
 import '../../core/theme/app_colors.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class MessagesView extends GetView<MessagesController> {
   const MessagesView({super.key});
@@ -30,12 +31,12 @@ class MessagesView extends GetView<MessagesController> {
         children: [
           Container(
             color: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16), vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
               decoration: BoxDecoration(
                 color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(24.r),
+                borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
               ),
               child: TextField(
                 decoration: InputDecoration(
@@ -55,20 +56,20 @@ class MessagesView extends GetView<MessagesController> {
               itemBuilder: (context, index) {
                 return ListTile(
                   contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 8.h,
+                    horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+                    vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
                   ),
                   leading: Stack(
                     children: [
                       CircleAvatar(
-                        radius: 24.r,
+                        radius: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24),
                         backgroundColor: AppColors.primaryColor.withValues(
                           alpha: 0.1,
                         ),
                         child: Icon(
                           Icons.person,
                           color: AppColors.primaryColor,
-                          size: 28.sp,
+                          size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 28),
                         ),
                       ),
                       if (index == 0) // Unread dot mock
@@ -76,8 +77,8 @@ class MessagesView extends GetView<MessagesController> {
                           right: 0,
                           bottom: 0,
                           child: Container(
-                            width: 12.w,
-                            height: 12.w,
+                            width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+                            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
                             decoration: BoxDecoration(
                               color: Colors.red,
                               shape: BoxShape.circle,

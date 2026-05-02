@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/home/home_controller.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -30,16 +29,29 @@ class CustomHomeCategories extends StatelessWidget {
             ),
           ),
         ),
-        10.verticalSpace,
         SizedBox(
-          height: 40.h,
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+        ),
+        SizedBox(
+          height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 40),
           child: GetBuilder<HomeController>(
             builder: (controller) {
               return ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                padding: EdgeInsets.symmetric(
+                  horizontal: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 5,
+                  ),
+                ),
                 scrollDirection: Axis.horizontal,
                 itemCount: controller.categories.length,
-                separatorBuilder: (context, index) => 5.horizontalSpace,
+                separatorBuilder:
+                    (context, index) => SizedBox(
+                      width: AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 10,
+                      ),
+                    ),
                 itemBuilder: (context, index) {
                   final category = controller.categories[index];
                   final isSelected = controller.selectedCategory == category;

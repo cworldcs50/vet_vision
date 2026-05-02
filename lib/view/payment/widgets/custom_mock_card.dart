@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomMockCard extends StatelessWidget {
   const CustomMockCard({super.key});
@@ -9,14 +8,14 @@ class CustomMockCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20.w),
+      padding: EdgeInsets.all(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20)),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
@@ -53,7 +52,7 @@ class CustomMockCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 30.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 30)),
           Text(
             "**** **** **** 3456",
             style: TextStyle(
@@ -65,7 +64,7 @@ class CustomMockCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

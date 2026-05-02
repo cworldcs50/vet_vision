@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../controller/auth/auth_controller.dart';
 import '../../../core/classes/adaptive_layout.dart';
@@ -19,18 +18,29 @@ class AuthToggleTabs extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(
+          AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+        ),
       ),
-      padding: EdgeInsets.all(4.w),
+      padding: EdgeInsets.all(
+        AdaptiveLayout.getResponsiveFontSize(context, fontSize: 4),
+      ),
       child: Row(
         children: [
           Expanded(
             child: GestureDetector(
               onTap: () => controller.toggleTab(true),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
+                padding: EdgeInsets.symmetric(
+                  vertical: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 12,
+                  ),
+                ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
+                  borderRadius: BorderRadius.circular(
+                    AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+                  ),
                   color: isSignIn ? Colors.white : Colors.transparent,
                   boxShadow:
                       isSignIn
@@ -63,16 +73,22 @@ class AuthToggleTabs extends StatelessWidget {
             child: GestureDetector(
               onTap: () => controller.toggleTab(false),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12.h),
+                padding: EdgeInsets.symmetric(
+                  vertical: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 12,
+                  ),
+                ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
+                  borderRadius: BorderRadius.circular(
+                    AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+                  ),
                   color: !isSignIn ? Colors.white : Colors.transparent,
                   boxShadow:
                       !isSignIn
                           ? [
                             BoxShadow(
-                              // ignore: deprecated_member_use
-                              color: Colors.black.withOpacity(0.05),
+                              color: Colors.black.withValues(alpha: 0.05),
                               blurRadius: 4,
                               offset: const Offset(0, 2),
                             ),

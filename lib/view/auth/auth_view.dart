@@ -7,7 +7,6 @@ import '../../core/classes/adaptive_layout.dart';
 import '../../core/classes/request_handler.dart';
 import '../../core/constants/images_constants.dart';
 import '../../controller/auth/auth_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthView extends GetView<AuthController> {
   const AuthView({super.key});
@@ -24,24 +23,52 @@ class AuthView extends GetView<AuthController> {
           status: controller.requestStatus.value,
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(10.0.w),
+              padding: EdgeInsets.all(
+                AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10.0),
+              ),
               child: Column(
                 children: [
-                  30.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 30,
+                    ),
+                  ),
                   Container(
-                    width: 80.w,
-                    height: 80.w,
-                    padding: EdgeInsets.all(8.w),
+                    width: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 80,
+                    ),
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 80,
+                    ),
+                    padding: EdgeInsets.all(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 8,
+                      ),
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(16.r),
+                      borderRadius: BorderRadius.circular(
+                        AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                     child: Image.asset(
                       ImagesConstants.kLogo,
                       fit: BoxFit.contain,
                     ),
                   ),
-                  16.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 16,
+                    ),
+                  ),
                   Text(
                     "Vet Vision",
                     style: TextStyle(
@@ -53,7 +80,12 @@ class AuthView extends GetView<AuthController> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  8.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 8,
+                    ),
+                  ),
                   Text(
                     isSignIn
                         ? "Welcome back! Sign in to continue."
@@ -66,12 +98,27 @@ class AuthView extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                  30.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 30,
+                    ),
+                  ),
                   Container(
-                    padding: EdgeInsets.all(5.w),
+                    padding: EdgeInsets.all(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 5,
+                      ),
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(24.r),
+                      borderRadius: BorderRadius.circular(
+                        AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 24,
+                        ),
+                      ),
                     ),
                     child: Form(
                       key: controller.authFormKey,
@@ -86,7 +133,12 @@ class AuthView extends GetView<AuthController> {
                       ),
                     ),
                   ),
-                  40.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 40,
+                    ),
+                  ),
                 ],
               ),
             ),

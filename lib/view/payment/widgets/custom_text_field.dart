@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/classes/adaptive_layout.dart';
 
@@ -23,7 +22,7 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
         TextField(
           decoration: InputDecoration(
             hintText: hint,
@@ -31,19 +30,19 @@ class CustomTextField extends StatelessWidget {
             filled: true,
             fillColor: Colors.white,
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 14.h,
+              horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16),
+              vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: BorderSide(color: Colors.grey.shade300),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: BorderSide(color: Colors.grey.shade300),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               borderSide: const BorderSide(color: Color(0xFF009689)),
             ),
           ),

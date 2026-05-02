@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'custom_order_summary_row.dart';
 import 'custom_payment_method_option.dart';
 import '../../../core/classes/adaptive_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/payment/payment_controller.dart';
 import '../../book_appointment/widgets/custom_elevated_btn.dart';
 import '../../book_appointment/widgets/custom_checkout_doctor_card.dart';
@@ -36,7 +35,7 @@ class MobilePayment extends StatelessWidget {
                 doctorName: controller.doctorName,
                 imgPath: "assets/images/doctor.png",
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
               Text(
                 "Payment Method",
                 style: TextStyle(
@@ -47,7 +46,7 @@ class MobilePayment extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
               CustomPaymentMethodOption(
                 value: "visa",
                 icon: Icons.credit_card,
@@ -56,7 +55,7 @@ class MobilePayment extends StatelessWidget {
                 groupValue: controller.selectedPaymentMethod,
                 onChanged: (val) => controller.setPaymentMethod(val),
               ),
-              SizedBox(height: 12.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
               CustomPaymentMethodOption(
                 value: "arrival",
                 icon: Icons.money,
@@ -65,7 +64,7 @@ class MobilePayment extends StatelessWidget {
                 groupValue: controller.selectedPaymentMethod,
                 onChanged: (val) => controller.setPaymentMethod(val),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
               if (controller.sessionType.toLowerCase() == "online")
                 const CustomInfoBox(
                   icon: Icons.videocam_outlined,
@@ -78,19 +77,19 @@ class MobilePayment extends StatelessWidget {
                   text:
                       "Your appointment is reserved. Please arrive 10 minutes early and pay at the reception. Accepted: Cash or card at clinic.",
                 ),
-              SizedBox(height: 24.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 24)),
               CustomOrderSummaryRow(
                 title: "Consultation fee",
                 value: "\$${controller.consultationFee.toStringAsFixed(0)}",
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
               CustomOrderSummaryRow(
                 title: "Service fee",
                 value: "\$${controller.serviceFee.toStringAsFixed(0)}",
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
               const Divider(),
-              SizedBox(height: 8.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -117,7 +116,7 @@ class MobilePayment extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 32.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 32)),
               SizedBox(
                 width: double.infinity,
                 child: CustomElevatedBtn(
@@ -128,7 +127,7 @@ class MobilePayment extends StatelessWidget {
                   onPressed: controller.confirmBooking,
                 ),
               ),
-              SizedBox(height: 32.h),
+              SizedBox(height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 32)),
             ],
           ),
         );

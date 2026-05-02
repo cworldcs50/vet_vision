@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -33,7 +32,9 @@ class CustomSearchBar extends StatelessWidget {
             color: Colors.grey.shade400,
             size: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 22),
           ),
-          12.horizontalSpace,
+          SizedBox(
+            width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+          ),
           Expanded(
             child: Text(
               "Search doctors, specializations...",
@@ -51,8 +52,7 @@ class CustomSearchBar extends StatelessWidget {
               AdaptiveLayout.getResponsiveFontSize(context, fontSize: 6),
             ),
             decoration: BoxDecoration(
-              // ignore: deprecated_member_use
-              color: const Color(0xFF009689).withOpacity(0.1),
+              color: const Color(0xFF009689).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(
                 AdaptiveLayout.getResponsiveFontSize(context, fontSize: 8),
               ),

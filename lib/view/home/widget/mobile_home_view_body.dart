@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/classes/adaptive_layout.dart';
 import '../../../controller/home/home_controller.dart';
 import 'custom_home_header.dart';
@@ -37,14 +36,23 @@ class MobileHomeViewBody extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CustomHomeHeader(),
-                20.verticalSpace,
+                SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 20,
+                  ),
+                ),
                 const CustomSearchBar(),
               ],
             ),
           ),
-          20.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          ),
           const CustomHomeCategories(),
-          20.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: AdaptiveLayout.getResponsiveFontSize(
@@ -54,7 +62,9 @@ class MobileHomeViewBody extends GetView<HomeController> {
             ),
             child: const CustomSpecialOfferBanner(),
           ),
-          20.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: AdaptiveLayout.getResponsiveFontSize(
@@ -92,7 +102,9 @@ class MobileHomeViewBody extends GetView<HomeController> {
               ],
             ),
           ),
-          10.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10),
+          ),
           ListView.separated(
             padding: EdgeInsets.symmetric(
               horizontal: AdaptiveLayout.getResponsiveFontSize(
@@ -107,13 +119,21 @@ class MobileHomeViewBody extends GetView<HomeController> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: controller.allDoctors.length,
-            separatorBuilder: (context, index) => 15.verticalSpace,
+            separatorBuilder:
+                (context, index) => SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
+                ),
             itemBuilder: (context, index) {
               final doctor = controller.allDoctors[index];
               return CustomDoctorCard(doctor: doctor);
             },
           ),
-          20.verticalSpace,
+          SizedBox(
+            height: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20),
+          ),
         ],
       ),
     );

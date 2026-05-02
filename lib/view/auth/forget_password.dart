@@ -4,7 +4,6 @@ import '../../core/theme/app_colors.dart';
 import '../../core/classes/request_handler.dart';
 import '../../core/classes/adaptive_layout.dart';
 import '../../controller/auth/auth_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPassword extends GetView<AuthController> {
   const ForgetPassword({super.key});
@@ -33,14 +32,14 @@ class ForgetPassword extends GetView<AuthController> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                  padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 20.0)),
                   child: TextFormField(
                     controller: controller.forgetPasswordController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: controller.emailValidator,
                     style: const TextStyle(color: Colors.black),
                     cursorColor: Colors.black,
-                    cursorWidth: 2.w,
+                    cursorWidth: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2),
                     decoration: InputDecoration(
                       hintStyle: TextStyle(
                         fontSize: AdaptiveLayout.getResponsiveFontSize(
@@ -69,27 +68,27 @@ class ForgetPassword extends GetView<AuthController> {
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: const Color(0XFF999AAF),
-                          width: 2.w,
+                          width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2),
                         ),
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Color(0XFF999AAF)),
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: const Color(0XFF999AAF),
-                          width: 2.w,
+                          width: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 2),
                         ),
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
                       ),
                     ),
                   ),

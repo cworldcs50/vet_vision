@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
@@ -25,7 +26,7 @@ class CustomAuthButton extends StatelessWidget {
         side:
             isOutlined ? const BorderSide(color: Colors.grey) : BorderSide.none,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14.r),
+          borderRadius: BorderRadius.circular(AdaptiveLayout.getResponsiveFontSize(context, fontSize: 14)),
         ),
       ),
       child: child,

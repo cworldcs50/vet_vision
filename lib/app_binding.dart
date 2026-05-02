@@ -14,7 +14,6 @@ class AppBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => LogoController());
-
     Get.lazyPut(() => HomeController());
     Get.lazyPut(() => OnBoardingController());
     Get.lazyPut(() => BookAppointmentController());

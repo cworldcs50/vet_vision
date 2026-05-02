@@ -4,7 +4,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/classes/adaptive_layout.dart';
 import '../../../controller/home/home_controller.dart';
 import '../../../core/constants/images_constants.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/book_appointment/book_appointment_controller.dart';
 
 class MobileDoctorProfile extends GetView<BookAppointmentController> {
@@ -29,7 +28,10 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
           slivers: [
             SliverAppBar(
               pinned: true,
-              expandedHeight: 300.h,
+              expandedHeight: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 300,
+              ),
               backgroundColor: const Color(0xFF009689),
               leading: IconButton(
                 icon: Container(
@@ -74,7 +76,7 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                   ),
                   onPressed: () {},
                 ),
-                // 10.horizontalSpace,
+                // AdaptiveLayout.getResponsiveFontSize(context, fontSize: 10)orizontalSpace,
               ],
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
@@ -100,15 +102,35 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                 decoration: BoxDecoration(
                   color: AppColors.backgroundColor,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30.r),
-                    topRight: Radius.circular(30.r),
+                    topLeft: Radius.circular(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 30,
+                      ),
+                    ),
+                    topRight: Radius.circular(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 30,
+                      ),
+                    ),
                   ),
                 ),
                 child: Column(
                   children: [
-                    20.verticalSpace,
+                    SizedBox(
+                      height: AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 20,
+                      ),
+                    ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 20,
+                        ),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -138,7 +160,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                                       fontSize: 20,
                                     ),
                                   ),
-                                  4.horizontalSpace,
+                                  SizedBox(
+                                    width: AdaptiveLayout.getResponsiveFontSize(
+                                      context,
+                                      fontSize: 4,
+                                    ),
+                                  ),
                                   Text(
                                     "${doctor.rating}",
                                     style: TextStyle(
@@ -165,7 +192,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                               ),
                             ],
                           ),
-                          5.verticalSpace,
+                          SizedBox(
+                            height: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 5,
+                            ),
+                          ),
                           Text(
                             doctor.specialization,
                             style: TextStyle(
@@ -177,7 +209,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          15.verticalSpace,
+                          SizedBox(
+                            width: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 15,
+                            ),
+                          ),
                           Row(
                             children: [
                               Container(
@@ -202,7 +239,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                                   ),
                                 ),
                               ),
-                              5.horizontalSpace,
+                              SizedBox(
+                                width: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 5,
+                                ),
+                              ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -230,7 +272,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                                   ),
                                 ],
                               ),
-                              30.horizontalSpace,
+                              SizedBox(
+                                width: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 30,
+                                ),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(
                                   AdaptiveLayout.getResponsiveFontSize(
@@ -253,7 +300,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                                   ),
                                 ),
                               ),
-                              10.horizontalSpace,
+                              SizedBox(
+                                width: AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 10,
+                                ),
+                              ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -283,11 +335,21 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                               ),
                             ],
                           ),
-                          20.verticalSpace,
+                          SizedBox(
+                            height: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 20,
+                            ),
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.grey.shade100,
-                              borderRadius: BorderRadius.circular(15.r),
+                              borderRadius: BorderRadius.circular(
+                                AdaptiveLayout.getResponsiveFontSize(
+                                  context,
+                                  fontSize: 15,
+                                ),
+                              ),
                             ),
                             child: Obx(
                               () => Row(
@@ -317,7 +379,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                               ),
                             ),
                           ),
-                          20.verticalSpace,
+                          SizedBox(
+                            height: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 20,
+                            ),
+                          ),
                           Obx(() {
                             if (controller.selectedTabIndex.value == 0) {
                               return Text(
@@ -341,7 +408,13 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                                     title: "Session Consultation",
                                   ),
 
-                                  15.verticalSpace,
+                                  SizedBox(
+                                    height:
+                                        AdaptiveLayout.getResponsiveFontSize(
+                                          context,
+                                          fontSize: 15,
+                                        ),
+                                  ),
                                   const CustomSessionCard(
                                     price: "\$80.00",
                                     type: "In-Person",
@@ -355,7 +428,12 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
                               );
                             }
                           }),
-                          100.verticalSpace, // Padding for bottom bar
+                          SizedBox(
+                            height: AdaptiveLayout.getResponsiveFontSize(
+                              context,
+                              fontSize: 100,
+                            ), // Padding for bottom bar
+                          ),
                         ],
                       ),
                     ),
@@ -372,7 +450,16 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
           right: 0,
           bottom: 0,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 20,
+              ),
+              vertical: AdaptiveLayout.getResponsiveFontSize(
+                context,
+                fontSize: 20,
+              ),
+            ),
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -386,22 +473,44 @@ class MobileDoctorProfile extends GetView<BookAppointmentController> {
             child: Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(12.w),
+                  padding: EdgeInsets.all(
+                    AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12),
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFF009689).withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(
+                      AdaptiveLayout.getResponsiveFontSize(
+                        context,
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
                   child: const Icon(Icons.chat, color: Color(0xFF009689)),
                 ),
-                15.horizontalSpace,
+                SizedBox(
+                  width: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 15,
+                  ),
+                ),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: controller.bookAppointment,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF009689),
-                      padding: EdgeInsets.symmetric(vertical: 16.h),
+                      padding: EdgeInsets.symmetric(
+                        vertical: AdaptiveLayout.getResponsiveFontSize(
+                          context,
+                          fontSize: 16,
+                        ),
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.r),
+                        borderRadius: BorderRadius.circular(
+                          AdaptiveLayout.getResponsiveFontSize(
+                            context,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
                       elevation: 0,
                     ),
@@ -472,7 +581,12 @@ class CustomSessionCard extends StatelessWidget {
                   color: const Color(0xFF009689),
                 ),
               ),
-              15.horizontalSpace,
+              SizedBox(
+                width: AdaptiveLayout.getResponsiveFontSize(
+                  context,
+                  fontSize: 15,
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -486,7 +600,12 @@ class CustomSessionCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  5.verticalSpace,
+                  SizedBox(
+                    height: AdaptiveLayout.getResponsiveFontSize(
+                      context,
+                      fontSize: 5,
+                    ),
+                  ),
                   Text(
                     type,
                     style: TextStyle(
@@ -537,13 +656,20 @@ class CustomTabItem extends StatelessWidget {
       child: GestureDetector(
         onTap: changeTab,
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
+          padding: EdgeInsets.symmetric(
+            vertical: AdaptiveLayout.getResponsiveFontSize(
+              context,
+              fontSize: 12,
+            ),
+          ),
           decoration: BoxDecoration(
             color:
                 selectedIndex == index
                     ? const Color(0xFF009689)
                     : Colors.transparent,
-            borderRadius: BorderRadius.circular(15.r),
+            borderRadius: BorderRadius.circular(
+              AdaptiveLayout.getResponsiveFontSize(context, fontSize: 15),
+            ),
           ),
           alignment: Alignment.center,
           child: Text(

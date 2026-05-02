@@ -6,7 +6,8 @@ import '../../core/constants/caching_keys_constants.dart';
 import '../../core/routes/app_routes_name.dart';
 import '../../core/services/app_service.dart';
 import '../../core/theme/app_colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class SuccessSignIn extends StatelessWidget {
   const SuccessSignIn({super.key});
@@ -19,10 +20,10 @@ class SuccessSignIn extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(child: Text("🎉", style: TextStyle(fontSize: 50.sp))),
+            Flexible(child: Text("🎉", style: TextStyle(fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 50)))),
             Text(
               "Welcome to VetVision!",
-              style: TextStyle(color: const Color(0XFF009689), fontSize: 16.sp),
+              style: TextStyle(color: const Color(0XFF009689), fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
             ),
             const Flexible(
               child: Text(
@@ -47,7 +48,7 @@ class SuccessSignIn extends StatelessWidget {
               ),
               child: Text(
                 "Let's Start!",
-                style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                style: TextStyle(color: Colors.white, fontSize: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16)),
               ),
             ),
           ],

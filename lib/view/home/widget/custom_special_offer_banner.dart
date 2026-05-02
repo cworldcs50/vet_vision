@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/classes/adaptive_layout.dart';
 
 class CustomSpecialOfferBanner extends StatelessWidget {
@@ -58,7 +57,12 @@ class CustomSpecialOfferBanner extends StatelessWidget {
                     ),
                   ),
                 ),
-                10.verticalSpace,
+                SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 10,
+                  ),
+                ),
                 Text(
                   "First consultation 20% off!",
                   style: TextStyle(
@@ -70,7 +74,12 @@ class CustomSpecialOfferBanner extends StatelessWidget {
                     color: Colors.black87,
                   ),
                 ),
-                10.verticalSpace,
+                SizedBox(
+                  height: AdaptiveLayout.getResponsiveFontSize(
+                    context,
+                    fontSize: 10,
+                  ),
+                ),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(

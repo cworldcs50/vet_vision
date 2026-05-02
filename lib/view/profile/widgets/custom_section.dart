@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vet_vision_2/core/classes/adaptive_layout.dart';
+
 
 class CustomSection extends StatelessWidget {
   const CustomSection({super.key, required this.title, required this.items});
@@ -15,7 +16,7 @@ class CustomSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 16), vertical: AdaptiveLayout.getResponsiveFontSize(context, fontSize: 12)),
             child: Text(
               title,
               style: TextStyle(
